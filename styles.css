@@ -1,5 +1,4 @@
-# styles.css
-```css
+css
 :root {
   --bg: #0b1220;
   --panel: #0f172a;
@@ -76,4 +75,3 @@ body {
   .site-nav { display:none; flex-direction: column; position:absolute; right:4%; top:58px; background:#0b1220; border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:10px; }
   .site-nav.open { display:flex; }
 }
-```
