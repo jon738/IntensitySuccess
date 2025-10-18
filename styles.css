@@ -20,7 +20,7 @@ body {
 .container { width: min(1100px, 92%); margin: 0 auto; }
 .narrow { width: min(780px, 92%); margin: 0 auto; }
 .section { padding: 72px 0; }
-.section.alt { background: #f9fafc; }
+.section.alt { background: #ffffff; }
 
 .site-header {
   position: sticky; top: 0; z-index: 50;
@@ -56,6 +56,11 @@ body {
 .card h3 { margin: 4px 0 8px; color: var(--brand-2); }
 .card p { margin: 0; color: var(--muted); }
 
+#about { background: #ffffff; color: var(--text); }
+#about h2 { color: var(--brand-2); }
+#about p, #about li { color: var(--muted); }
+
+#contact { background: #f9fafc; }
 .contact { display: grid; gap: 14px; }
 .contact label { display: grid; gap: 6px; }
 .contact input, .contact textarea {
