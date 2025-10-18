@@ -186,7 +186,9 @@ body.scrolled .site-header {
   box-shadow: 0 6px 18px rgba(11,58,102,0.1);
   color: var(--brand);
 }
-
+.btn, .btn-primary {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.4s ease, color 0.3s ease;
+}
 /* Cards / grid */
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .card {
