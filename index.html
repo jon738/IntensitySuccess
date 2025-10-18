@@ -1,5 +1,4 @@
-# index.html
-```html
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +23,7 @@
       <a class="logo" href="#">Intensity Success</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="site-nav" aria-label="Primary">
-        <a href="#features">Features</a>
+        <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -34,29 +33,35 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <h1>Build your web presence your way.</h1>
-        <p>No templates, no constraints—just clean HTML, CSS, and a fast GitHub Pages deploy.</p>
+        <h1>Level up your business with focused execution.</h1>
+        <p>Hands-on consulting, systems, and coaching to turn momentum into measurable results.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#features">See Features</a>
-          <a class="btn" href="#contact">Get in Touch</a>
+          <a class="btn btn-primary" href="#services">Explore Services</a>
+          <a class="btn" href="#contact">Book a Discovery Call</a>
         </div>
       </div>
     </section>
 
-    <section id="features" class="section">
-      <div class="container grid-3">
-        <article class="card">
-          <h3>⚡ Super Fast</h3>
-          <p>Static pages load quickly, score great on Lighthouse, and are SEO friendly by default.</p>
-        </article>
-        <article class="card">
-          <h3>🧩 Fully Custom</h3>
-          <p>Hand‑code anything you need—no theme lock‑in, no bloat, no hidden scripts.</p>
-        </article>
-        <article class="card">
-          <h3>🔒 Secure & Simple</h3>
-          <p>HTTPS by default via GitHub, with a super‑simple deployment workflow.</p>
-        </article>
+    <section id="services" class="section">
+      <div class="container">
+        <div class="narrow" style="text-align:center; margin-bottom:28px;">
+          <h2>Services</h2>
+          <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>🚀 Strategy Intensive (90‑Day Plan)</h3>
+            <p>Deep-dive session + a clear 90‑day roadmap covering goals, metrics, and the highest‑leverage actions. Includes a one‑page plan and execution cadence.</p>
+          </article>
+          <article class="card">
+            <h3>⚙️ Systems & Automation</h3>
+            <p>We streamline your workflows: CRM + website + knowledge base, email capture, and automations so you stop doing repetitive busywork.</p>
+          </article>
+          <article class="card">
+            <h3>🎯 Coaching & Accountability</h3>
+            <p>Weekly or bi‑weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -64,16 +69,21 @@
       <div class="container narrow">
         <h2>About</h2>
         <p>
-          This starter gives you a clean foundation—semantic HTML, utility classes, and a tiny script
-          for the mobile menu. Extend it with components, animations, or a blog. If you want a contact
-          form, use a no‑backend service like Formspree/EmailJS.
+          Intensity Success helps founders and teams ship faster with fewer moving parts. I combine product thinking,
+          clear process, and pragmatic automation to create momentum you can measure.
         </p>
+        <ul style="margin:14px 0 0; padding-left:18px; color: var(--muted); line-height:1.7;">
+          <li>Clarity first: define the outcome, then cut steps.</li>
+          <li>Systems over heroics: build processes that scale your time.</li>
+          <li>Action bias: small wins compounded weekly beat big plans never shipped.</li>
+        </ul>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container narrow">
         <h2>Contact</h2>
+        <p class="form-note" style="margin-bottom:12px;">Tell me a bit about your goals and timeline. I’ll reply with next steps and a link to book a call.</p>
         <form class="contact" action="https://formspree.io/f/yourid" method="POST">
           <label>
             <span>Name</span>
@@ -84,11 +94,11 @@
             <input type="email" name="email" required>
           </label>
           <label>
-            <span>Message</span>
-            <textarea name="message" rows="5" required></textarea>
+            <span>What are you trying to achieve in the next 90 days?</span>
+            <textarea name="message" rows="6" required></textarea>
           </label>
-          <button class="btn btn-primary" type="submit">Send</button>
-          <p class="form-note">* Replace the `action` URL with your Formspree endpoint.</p>
+          <button class="btn btn-primary" type="submit">Request Discovery Call</button>
+          <p class="form-note">Prefer email? <a href="mailto:hello@intensitysuccess.com">hello@intensitysuccess.com</a></p>
         </form>
       </div>
     </section>
@@ -107,6 +117,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-```
-
----
