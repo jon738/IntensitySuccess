@@ -1,0 +1,112 @@
+# index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intensity Success</title>
+  <meta name="description" content="Intensity Success — actionable strategies and tools to level up your life and work." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="canonical" href="https://intensitysuccess.com/">
+  <meta property="og:title" content="Intensity Success" />
+  <meta property="og:description" content="Actionable strategies and tools to level up your life and work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://intensitysuccess.com/" />
+  <meta property="og:image" content="https://intensitysuccess.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#">Intensity Success</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Build your web presence your way.</h1>
+        <p>No templates, no constraints—just clean HTML, CSS, and a fast GitHub Pages deploy.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#features">See Features</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container grid-3">
+        <article class="card">
+          <h3>⚡ Super Fast</h3>
+          <p>Static pages load quickly, score great on Lighthouse, and are SEO friendly by default.</p>
+        </article>
+        <article class="card">
+          <h3>🧩 Fully Custom</h3>
+          <p>Hand‑code anything you need—no theme lock‑in, no bloat, no hidden scripts.</p>
+        </article>
+        <article class="card">
+          <h3>🔒 Secure & Simple</h3>
+          <p>HTTPS by default via GitHub, with a super‑simple deployment workflow.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section alt">
+      <div class="container narrow">
+        <h2>About</h2>
+        <p>
+          This starter gives you a clean foundation—semantic HTML, utility classes, and a tiny script
+          for the mobile menu. Extend it with components, animations, or a blog. If you want a contact
+          form, use a no‑backend service like Formspree/EmailJS.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container narrow">
+        <h2>Contact</h2>
+        <form class="contact" action="https://formspree.io/f/yourid" method="POST">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Send</button>
+          <p class="form-note">* Replace the `action` URL with your Formspree endpoint.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+---
