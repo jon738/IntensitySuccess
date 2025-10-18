@@ -61,11 +61,6 @@ body {
 .btn-primary:hover { filter: brightness(1.05); transform: translateY(-2px); }
 
 
-.btn { display:inline-flex; align-items:center; gap:8px; padding: 14px 20px; border-radius: 12px; border:1px solid rgba(0,0,0,.1); text-decoration:none; color:var(--brand-2); background:#fff; font-weight:600; box-shadow:0 2px 6px rgba(0,0,0,.05); }
-.btn:hover { background:#f1f5f9; border-color:rgba(0,0,0,.15); }
-.btn-primary { background: linear-gradient(180deg, var(--brand), var(--brand-2)); border: none; color:#fff; box-shadow:0 6px 16px rgba(59,130,246,.25); }
-.btn-primary:hover { filter: brightness(1.05); }
-
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .card { background: var(--panel); border:1px solid rgba(0,0,0,.06); border-radius: 16px; padding: 26px; box-shadow: 0 6px 25px rgba(0,0,0,.05); transition: transform .2s ease, box-shadow .2s ease; }
 .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(59,130,246,.2); }
