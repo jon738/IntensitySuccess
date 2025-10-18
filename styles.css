@@ -140,19 +140,52 @@ body.scrolled .site-header {
   .ai-blob, .ai-grid { animation: none !important; }
 }
 
-/* Buttons (light theme) */
+/* === Buttons (Glass + Glow refinement) === */
 .btn {
-  display:inline-flex; align-items:center; gap:8px;
-  padding: 14px 20px; border-radius: 12px;
-  border:1px solid rgba(0,0,0,.1);
-  text-decoration:none; color:var(--brand-2);
-  background:#fff;
-  font-weight:600; box-shadow:0 2px 6px rgba(0,0,0,.06);
-  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
 }
-.btn:hover { background:#f1f5f9; transform: translateY(-2px); }
-.btn-primary { background: linear-gradient(180deg, var(--brand), var(--brand-2)); border: none; color:#fff; box-shadow:0 6px 16px rgba(59,130,246,.25); }
-.btn-primary:hover { filter: brightness(1.05); transform: translateY(-2px); }
+
+/* Primary (blue gradient) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 16px rgba(59,130,246,0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.45);
+  background: linear-gradient(135deg, var(--brand-2) 0%, var(--brand) 100%);
+}
+
+/* Secondary (glass style) */
+.btn:not(.btn-primary) {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--brand-2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.btn:not(.btn-primary):hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(255,255,255,0.5);
+  box-shadow: 0 6px 18px rgba(11,58,102,0.1);
+  color: var(--brand);
+}
 
 /* Cards / grid */
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
