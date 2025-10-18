@@ -9,6 +9,6 @@ Quick start (GitHub Pages)
 5) **Custom domain**: Add a `CNAME` file with `intensitysuccess.com`. In your DNS:
    - `A` record → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages IPv4)
    - (Optional) `AAAA` records → `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - (Optional) `CNAME` for `www` → `<username>.github.io.`
+   - (Optional) `CNAME` for `www` → `<jon738>.github.io.`
    Then enable the domain under **Settings → Pages → Custom domain**, and turn on **Enforce HTTPS** after the certificate is ready.
 
