@@ -25,6 +25,13 @@ function revealOnScroll() {
     if (top < windowHeight - revealPoint) el.classList.add('show');
   });
 }
-
+// --- Add 'scrolled' class when page is scrolled ---
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    document.body.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('scrolled');
+  }
+});
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
