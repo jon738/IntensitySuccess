@@ -61,23 +61,65 @@ img { max-width: 100%; display: block; }
 .hero-points { margin: 16px 0 0; padding-left: 18px; color: var(--muted); }
 .hero-points li { margin: 4px 0; }
 
-/* Abstract AI visual (right side) */
-.ai-visual { position: relative; height: 360px; }
-.ai-blob {
-  position:absolute; inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(59,130,246,.5), transparent 55%),
-    radial-gradient(circle at 70% 60%, rgba(11,58,102,.45), transparent 50%),
-    linear-gradient(135deg, rgba(255,255,255,.8), rgba(255,255,255,.4));
-  filter: blur(20px); border-radius: 28px;
+/* === AI visual (minimal animated glow) === */
+.ai-visual {
+  position: relative;
+  height: 360px;
 }
+
+/* Soft drifting gradients that suggest “thinking” */
+.ai-blob {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(59,130,246,.50), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(11,58,102,.45), transparent 50%),
+    linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.45));
+  filter: blur(20px);
+  /* gentle motion */
+  animation: blobPulse 7s ease-in-out infinite;
+}
+
+/* Crisp grid with a slow “breathing” glow */
 .ai-grid {
-  position:absolute; inset: 0; border-radius: 24px;
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
   background-image:
     linear-gradient(0deg, rgba(59,130,246,.16) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59,130,246,.16) 1px, transparent 1px);
   background-size: 22px 22px;
-  box-shadow: inset 0 0 0 1px rgba(59,130,246,.18), 0 20px 50px rgba(11,58,102,.12);
+  box-shadow:
+    inset 0 0 0 1px rgba(59,130,246,.18),
+    0 20px 50px rgba(11,58,102,.12);
+  /* subtle glow change over time */
+  animation: gridGlow 14s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes blobPulse {
+  0%   { transform: translate(0,0) scale(1);   filter: blur(20px); }
+  50%  { transform: translate(4px,-4px) scale(1.02); filter: blur(22px); }
+  100% { transform: translate(0,0) scale(1);   filter: blur(20px); }
+}
+
+@keyframes gridGlow {
+  0%,100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(59,130,246,.18),
+      0 20px 50px rgba(11,58,102,.12);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(59,130,246,.28),
+      0 24px 60px rgba(11,58,102,.16);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ai-blob, .ai-grid { animation: none !important; }
 }
 
 /* Buttons (light theme) */
