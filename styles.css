@@ -37,13 +37,29 @@ body {
 .hero {
   padding: 110px 0 90px;
   text-align: center;
-  background: linear-gradient(180deg, #e9efff 0%, #f4f6fa 100%);
-  color: var(--text);
+  color: #fff;
+  background: linear-gradient(rgba(11,58,102,0.6), rgba(11,18,32,0.8)),
+    url('https://images.unsplash.com/photo-1522204504512-9b7d0ae420b9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  background-attachment: fixed;
+  animation: fadeInHero 1.5s ease forwards;
+  opacity: 0;
 }
+
+@keyframes fadeInHero {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-inner { display: grid; gap: 20px; }
-.hero h1 { font-size: clamp(30px, 4vw, 48px); margin: 0; color: var(--brand-2); line-height:1.2; }
-.hero p { color: var(--muted); font-size: 20px; margin: 0 auto; max-width:700px; }
+.hero h1 { font-size: clamp(30px, 4vw, 48px); margin: 0; color: #fff; line-height:1.2; text-shadow: 0 2px 8px rgba(0,0,0,.4); }
+.hero p { color: #e5e7eb; font-size: 20px; margin: 0 auto; max-width:700px; text-shadow: 0 1px 6px rgba(0,0,0,.3); }
 .hero-actions { display: inline-flex; gap: 14px; margin-top: 18px; }
+
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 14px 20px; border-radius: 12px; border:1px solid rgba(255,255,255,.2); text-decoration:none; color:#fff; background:rgba(255,255,255,.1); font-weight:600; box-shadow:0 2px 6px rgba(0,0,0,.2); transition: all .3s ease; }
+.btn:hover { background:rgba(255,255,255,.2); transform: translateY(-2px); }
+.btn-primary { background: linear-gradient(180deg, var(--brand), var(--brand-2)); border: none; color:#fff; box-shadow:0 6px 16px rgba(59,130,246,.4); }
+.btn-primary:hover { filter: brightness(1.05); transform: translateY(-2px); }
+
 
 .btn { display:inline-flex; align-items:center; gap:8px; padding: 14px 20px; border-radius: 12px; border:1px solid rgba(0,0,0,.1); text-decoration:none; color:var(--brand-2); background:#fff; font-weight:600; box-shadow:0 2px 6px rgba(0,0,0,.05); }
 .btn:hover { background:#f1f5f9; border-color:rgba(0,0,0,.15); }
