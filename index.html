@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Intensity Success</title>
-  <meta name="description" content="Intensity Success — actionable strategies and tools to level up your life and work." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <title>Intensity Success — AI Coaching & Consulting</title>
+  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see progress in your business and life." />
   <link rel="canonical" href="https://intensitysuccess.com/">
-  <meta property="og:title" content="Intensity Success" />
-  <meta property="og:description" content="Actionable strategies and tools to level up your life and work." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Intensity Success — AI Coaching & Consulting" />
+  <meta property="og:description" content="Work smarter with AI-enhanced coaching. Clarity, systems, and momentum you can measure." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://intensitysuccess.com/" />
   <meta property="og:image" content="https://intensitysuccess.com/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
@@ -29,20 +31,33 @@
     </div>
   </header>
 
-  <main>
-<section class="hero">
-  <div class="container hero-inner">
-    <h1>It’s time to work smarter — and finally see progress.</h1>
-    <p>From systems to mindset, I’ll help you simplify your path to success so you can scale your business and life with purpose.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#services">Explore Coaching</a>
-      <a class="btn" href="#contact">Get a Free Strategy Session</a>
+  <!-- HERO (Option 3: Human + Tech) -->
+  <section class="hero hero-split">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">AI Coaching • Systems • Clarity</p>
+        <h1>Where human potential meets artificial intelligence.</h1>
+        <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">Start the Transformation</a>
+          <a class="btn" href="#about">Learn More</a>
+        </div>
+        <ul class="hero-points">
+          <li>AI-assisted strategy & weekly coaching</li>
+          <li>Habit systems and lightweight automation</li>
+          <li>Clear 90-day outcomes you can measure</li>
+        </ul>
+      </div>
+      <!-- Visual side (pure CSS abstract AI motif) -->
+      <div class="ai-visual" aria-hidden="true">
+        <div class="ai-blob"></div>
+        <div class="ai-grid"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    </section>
-
+  <main>
+    <!-- Services -->
     <section id="services" class="section">
       <div class="container">
         <div class="narrow" style="text-align:center; margin-bottom:28px;">
@@ -50,28 +65,29 @@
           <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
         </div>
         <div class="grid-3">
-          <article class="card">
-            <h3>🚀 Strategy Intensive (90‑Day Plan)</h3>
-            <p>Deep-dive session + a clear 90‑day roadmap covering goals, metrics, and the highest‑leverage actions. Includes a one‑page plan and execution cadence.</p>
+          <article class="card reveal">
+            <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
+            <p>Deep-dive session + a clear 90-day roadmap covering goals, metrics, and the highest-leverage actions. Includes a one-page plan and execution cadence.</p>
           </article>
-          <article class="card">
-            <h3>⚙️ Systems & Automation</h3>
-            <p>We streamline your workflows: CRM + website + knowledge base, email capture, and automations so you stop doing repetitive busywork.</p>
+          <article class="card reveal">
+            <h3>🤖 Systems & AI Automation</h3>
+            <p>Streamline workflows with AI: research, drafting, CRM updates, inbox triage, and repeatable playbooks so you stop drowning in busywork.</p>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <h3>🎯 Coaching & Accountability</h3>
-            <p>Weekly or bi‑weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
+            <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="section alt">
       <div class="container narrow">
         <h2>About</h2>
         <p>
-          Intensity Success helps founders and teams ship faster with fewer moving parts. I combine product thinking,
-          clear process, and pragmatic automation to create momentum you can measure.
+          Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create
+          clarity, systems, and momentum you can measure.
         </p>
         <ul style="margin:14px 0 0; padding-left:18px; color: var(--muted); line-height:1.7;">
           <li>Clarity first: define the outcome, then cut steps.</li>
@@ -81,6 +97,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section">
       <div class="container narrow">
         <h2>Contact</h2>
@@ -115,6 +132,7 @@
     </div>
   </footer>
 
+  <!-- Keep your existing script.js in the repo -->
   <script src="script.js"></script>
 </body>
 </html>
