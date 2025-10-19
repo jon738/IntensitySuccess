@@ -123,26 +123,21 @@ body.scrolled .site-header {
     inset 0 1px 0 rgba(255, 255, 255, 0.25); /* inner highlight */
 }
 
-/* === Glowing brain SVG overlay === */
-.ai-brain-svg {
+.ai-brain {
   position: absolute;
-  inset: 6% 8%;
-  width: auto;
-  height: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   opacity: 0.9;
+  mix-blend-mode: screen;
   pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(59,130,246,0.30));
-  animation: brainGlowSvg 6s ease-in-out infinite alternate;
-}
-
-@keyframes brainGlowSvg {
-  0%   { filter: drop-shadow(0 0 10px rgba(59,130,246,0.30)) brightness(1); }
-  100% { filter: drop-shadow(0 0 18px rgba(59,130,246,0.50)) brightness(1.1); }
+  animation: brainGlow 6s ease-in-out infinite alternate;
 }
 
 @keyframes brainGlow {
-  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.30)); }
-  100% { filter: brightness(1.15) drop-shadow(0 0 18px rgba(59,130,246,0.50)); }
+  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
+  100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,0.5)); }
 }
 
 /* Core layers (no SVG mask — keep full rounded panel) */
