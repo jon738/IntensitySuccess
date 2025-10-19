@@ -35,36 +35,34 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero hero-split">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">AI Coaching • Systems • Clarity</p>
-        <h1>Where human potential meets artificial intelligence.</h1>
-        <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#services">Start the Transformation</a>
-          <a class="btn" href="#about">Learn More</a>
-        </div>
-
-        <ul class="hero-points">
-          <li>AI-assisted strategy & weekly coaching</li>
-          <li>Habit systems and lightweight automation</li>
-          <li>Clear 90-day outcomes you can measure</li>
-        </ul>
+ <!-- HERO -->
+<section class="hero hero-split">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Coaching • Systems • Clarity</p>
+      <h1>Where human potential meets artificial intelligence.</h1>
+      <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Start the Transformation</a>
+        <a class="btn" href="#about">Learn More</a>
       </div>
-
-      <!-- Right visual: breathing grid + transparent brain -->
-      <div class="ai-visual" aria-hidden="true">
-        <div class="ai-blob"></div>
-        <div class="ai-grid"></div>
-        <!-- Make sure this PNG is TRANSPARENT -->
-        <img class="ai-brain" src="assets/ai-brain.png?v=8" alt="" loading="eager" decoding="async">
-      </div>
+      <ul class="hero-points">
+        <li>AI-assisted strategy & weekly coaching</li>
+        <li>Habit systems and lightweight automation</li>
+        <li>Clear 90-day outcomes you can measure</li>
+      </ul>
     </div>
-  </section>
 
+    <!-- Visual side: blob + grid + masked brain -->
+    <div class="ai-visual" aria-hidden="true">
+      <div class="ai-blob"></div>
+      <div class="ai-grid"></div>
+      <!-- NOTE: no <img>. This div uses the PNG as a MASK only -->
+      <div class="ai-brain" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+  
   <main>
     <!-- Services -->
     <section id="services" class="section">
