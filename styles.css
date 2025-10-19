@@ -80,28 +80,14 @@ body.scrolled .site-header {
 .hero-points li { margin: 4px 0; }
 
 /* === Enhanced AI visual motion (more visible glow + drift) === */
-.ai-brain {
-  position: absolute;
-  left: 50%;
-  top: 46%;                          /* tweak to 45–47% to taste */
-  transform: translate(-50%, -50%);  /* true centering */
-  z-index: 2;
-  width: 82%;
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
-  /* keep it transparent-friendly */
-  filter: none;                      /* ← remove drop-shadow to prevent box */
-  mix-blend-mode: normal;
-  animation: brainFloat 12s ease-in-out infinite;
-}
 .ai-visual {
   position: relative;
   height: 360px;
   overflow: hidden;
+  isolation: isolate;
 }
 
-/* The soft luminous “thinking” background */
+/* Soft luminous “thinking” background */
 .ai-blob {
   position: absolute;
   inset: -20px; /* allow breathing beyond box */
@@ -126,8 +112,37 @@ body.scrolled .site-header {
   box-shadow:
     inset 0 0 0 1px rgba(59,130,246,.22),
     0 22px 55px rgba(11,58,102,.14),
-    0 0 60px rgba(59,130,246,.22);   /* soft outer glow – safe */
+    0 0 60px rgba(59,130,246,.22); /* soft outer glow */
   animation: gridGlow 10s ease-in-out infinite, gridDrift 30s linear infinite;
+}
+
+/* The brain: PNG used only as a mask (no bitmap rect can show) */
+.ai-brain {
+  position: absolute;
+  left: 50%;
+  top: 46%;                         /* tweak 45–47% to taste */
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 82%;
+  height: 82%;                      /* keep aspect; mask scales */
+  pointer-events: none;
+
+  /* Use the transparent PNG as the mask */
+  -webkit-mask-image: url('assets/ai-brain.png?v=3');
+  mask-image: url('assets/ai-brain.png?v=3');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  /* What actually gets drawn (through the mask) */
+  background: linear-gradient(135deg, #3b82f6, #0b3a66);
+  filter: none;                     /* ensure no rasterized box */
+  mix-blend-mode: normal;
+
+  animation: brainFloat 12s ease-in-out infinite;
 }
 
 /* Keyframes: soft pulse + slow parallax drift */
@@ -141,12 +156,14 @@ body.scrolled .site-header {
   0%,100% {
     box-shadow:
       inset 0 0 0 1px rgba(59,130,246,.20),
-      0 22px 55px rgba(11,58,102,.14);
+      0 22px 55px rgba(11,58,102,.14),
+      0 0 60px rgba(59,130,246,.22);
   }
   50% {
     box-shadow:
       inset 0 0 0 1px rgba(59,130,246,.38),
-      0 30px 70px rgba(11,58,102,.20);
+      0 30px 70px rgba(11,58,102,.20),
+      0 0 60px rgba(59,130,246,.22);
   }
 }
 
@@ -157,9 +174,16 @@ body.scrolled .site-header {
   100% { background-position: 0 0, 0 0; }
 }
 
+/* Gentle float motion for the brain */
+@keyframes brainFloat {
+  0%   { transform: translate(-50%, -50%) translateY(0) scale(1); }
+  50%  { transform: translate(-50%, -50%) translateY(-8px) scale(1.015); }
+  100% { transform: translate(-50%, -50%) translateY(0) scale(1); }
+}
+
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .ai-blob, .ai-grid { animation: none !important; }
+  .ai-blob, .ai-grid, .ai-brain { animation: none !important; }
 }
 
 /* === Buttons (Glass + Glow refinement) === */
