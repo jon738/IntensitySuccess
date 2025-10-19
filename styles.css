@@ -93,43 +93,39 @@ body.scrolled .site-header{
 /* =========================================================
    Hero
    ========================================================= */
-.hero{
+/* === HERO — split layout (keep your existing hero container styles) === */
+.hero {
   padding: 80px 0 70px;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(59,130,246,.15), transparent 60%),
+    radial-gradient(800px 400px at 90% 30%, rgba(11,58,102,.12), transparent 60%),
+    #f4f6fa;
   animation: fadeInHero 1.2s ease forwards; opacity: 0;
 }
-@keyframes fadeInHero{ from{ opacity:0; transform:translateY(18px);} to{ opacity:1; transform:translateY(0);} }
+@keyframes fadeInHero { from { opacity:0; transform:translateY(18px);} to { opacity:1; transform:translateY(0);} }
 
-.hero-grid{
-  display:grid; grid-template-columns: 1.1fr .9fr; align-items:center; gap:36px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 36px;
 }
-.hero-copy h1{
-  font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.1; margin: 6px 0 8px;
-  color: var(--brand-2);
-}
-.hero-copy p{ color: var(--muted); font-size: 19px; margin: 0 0 8px; }
-.eyebrow{
-  display:inline-block; font-weight:700; font-size:13px; letter-spacing:.12em; text-transform:uppercase;
-  color: var(--brand-2); background: rgba(59,130,246,.12);
-  padding:6px 10px; border-radius: 999px;
-}
-.hero-points{ margin:16px 0 0; padding-left:18px; color: var(--muted); }
-.hero-points li{ margin:4px 0; }
 
-/* === Hero AI Visual (contained glow + visible brain) === */
+/* === Contained visual box: no bleed, always transparent behind SVG === */
 .ai-visual {
   position: relative;
   width: 100%;
-  max-width: 520px;           /* keeps the visual from growing too wide */
-  aspect-ratio: 1 / 1;        /* square box so the glow doesn't stretch */
+  max-width: 520px;      /* controls the visual's max size */
+  aspect-ratio: 1 / 1;   /* square so glow stays even */
   border-radius: 28px;
-  overflow: hidden;           /* CONTAINS the blur so it doesn't bleed out */
+  overflow: hidden;      /* contains blur so it doesn’t spill across hero */
   isolation: isolate;
-  justify-self: center;       /* nice alignment in the grid */
-  background: transparent;    /* no tint behind it */
+  justify-self: center;
+  box-shadow: 0 22px 60px rgba(11,58,102,.10);
+  background: transparent;
 }
 
-/* Soft animated glow, centered and constrained */
+/* Soft animated glow held inside the box */
 .ai-blob {
   position: absolute;
   left: 50%;
@@ -146,9 +142,14 @@ body.scrolled .site-header{
   z-index: 0;
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
+@keyframes blobPulse {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: .7; }
+  50%  { transform: translate(-50%, -50%) scale(1.08); opacity: .95; }
+  100% { transform: translate(-50%, -50%) scale(1.03); opacity: .8; }
+}
 
-/* Make the brain clearly visible (no blend mode) */
-.ai-brain {
+/* The brain itself: crisp strokes, truly transparent background */
+.ai-brain-svg {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -157,37 +158,31 @@ body.scrolled .site-header{
   height: auto;
   transform: translate(-50%, -50%);
   z-index: 2;
-  opacity: 1;                       /* solid */
-  mix-blend-mode: normal;           /* <- key change from 'screen' */
   filter: drop-shadow(0 6px 14px rgba(11,58,102,0.18));
   pointer-events: none;
   animation:
     brainGlow 6s ease-in-out infinite alternate,
     brainFloat 12s ease-in-out infinite;
 }
-
-/* Glow + float (unchanged) */
 @keyframes brainGlow {
   0%   { filter: drop-shadow(0 4px 10px rgba(59,130,246,0.22)) brightness(1); }
   100% { filter: drop-shadow(0 8px 22px rgba(59,130,246,0.45)) brightness(1.06); }
 }
-
 @keyframes brainFloat {
   0%   { transform: translate(-50%, -50%) translateY(0)   scale(1); }
   50%  { transform: translate(-50%, -50%) translateY(-8px) scale(1.02); }
   100% { transform: translate(-50%, -50%) translateY(0)   scale(1); }
 }
 
-/* Keep the blob animation you already have */
-@keyframes blobPulse {
-  0%   { transform: translate(-50%, -50%) scale(1);   opacity: .7; }
-  50%  { transform: translate(-50%, -50%) scale(1.08); opacity: .95; }
-  100% { transform: translate(-50%, -50%) scale(1.03); opacity: .8; }
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ai-blob, .ai-brain-svg { animation: none !important; transform: translate(-50%, -50%) !important; }
 }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .ai-blob, .ai-brain { animation: none !important; transform: translate(-50%, -50%) !important; }
+/* Responsive: stack hero at tablet sizes */
+@media (max-width: 1020px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .ai-visual { order: -1; max-width: 440px; }
 }
 
 /* =========================================================
