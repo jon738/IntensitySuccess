@@ -263,29 +263,52 @@
       }
     })();
 
-    // KPI counters when #outcomes enters viewport
-    (function () {
-      const section = document.getElementById('outcomes');
-      const nums = section ? section.querySelectorAll('.kpi-number') : [];
-      if (!nums.length) return;
+   <script>
+(() => {
+  // Start the counters inside a root node (defaults to document)
+  const startCounters = (root = document) => {
+    root.querySelectorAll('.kpi-number').forEach(el => {
+      if (el.dataset.animated === 'true') return; // prevent double-run
+      el.dataset.animated = 'true';
 
-      const start = () => {
-        nums.forEach((el) => {
-          const target = +el.dataset.target || 0;
-          let current = 0;
-          const step = Math.max(1, Math.round(target / 60));
-          const tick = () => {
-            current += step;
-            if (current < target) {
-              el.textContent = current;
-              requestAnimationFrame(tick);
-            } else {
-              el.textContent = target;
-            }
-          };
-          tick();
-        });
+      const target = Number(el.dataset.target || 0);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+
+      // Smooth-ish timing ~1s; tweak divisor for speed
+      const step = Math.max(1, Math.round(target / 60));
+
+      const tick = () => {
+        current += step;
+        if (current < target) {
+          el.textContent = current + suffix;
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target + suffix;
+        }
       };
+      tick();
+    });
+  };
+
+  const outcomes = document.getElementById('outcomes');
+
+  if (outcomes && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          startCounters(outcomes);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(outcomes);
+  } else {
+    // Fallback
+    startCounters();
+  }
+})();
+</script>
 
       if ('IntersectionObserver' in window && section) {
         const io = new IntersectionObserver((entries) => {
