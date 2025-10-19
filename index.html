@@ -96,31 +96,33 @@
       </div>
     </section>
 
-    <!-- Outcomes / Proof (KPIs) -->
-    <section id="outcomes" class="section">
-      <div class="container">
-        <div class="narrow" style="text-align:center; margin-bottom:28px;">
-          <h2>Results you can measure in 90 days</h2>
-          <p class="form-note" style="margin:8px 0 0;">Clear, trackable improvements — not vague inspiration.</p>
-        </div>
+   <!-- Outcomes / Proof (KPIs) -->
+<section id="outcomes" class="section">
+  <div class="container">
+    <div class="narrow" style="text-align:center; margin-bottom:28px;">
+      <h2>Results you can measure in 90 days</h2>
+      <p class="form-note" style="margin:8px 0 0;">Clear, trackable improvements — not vague inspiration.</p>
+    </div>
 
-      <article class="card kpi">
-  <h3><span class="kpi-number" data-target="35" data-suffix="%">0%</span></h3>
-  <p>Avg. increase in deep-work hours per week</p>
-</article>
+    <!-- Put the KPI cards inside a grid wrapper -->
+    <div class="grid-3">
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="35" data-suffix="%">0%</span></h3>
+        <p>Avg. increase in deep-work hours per week</p>
+      </article>
 
-<article class="card kpi">
-  <h3><span class="kpi-number" data-target="28" data-suffix="%">0%</span></h3>
-  <p>Reduction in low-value tasks via lightweight automation</p>
-</article>
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="28" data-suffix="%">0%</span></h3>
+        <p>Reduction in low-value tasks via lightweight automation</p>
+      </article>
 
-<article class="card kpi">
-  <h3><span class="kpi-number" data-target="3" data-suffix="×">0×</span></h3>
-  <p>More consistent shipping cadence</p>
-</article>
-        </div>
-      </div>
-    </section>
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="3" data-suffix="×">0×</span></h3>
+        <p>More consistent shipping cadence</p>
+      </article>
+    </div>
+  </div>
+</section>
 
     <!-- About -->
     <section id="about" class="section alt">
@@ -212,68 +214,96 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Auto-update footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // KPI counter: only when outcomes section is visible
-    (function () {
-      const nums = document.querySelectorAll('#outcomes .kpi-number');
-      if (!nums.length) return;
+  // Global reveal for ANY .reveal (services, KPIs, etc.)
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
 
-      const startCounters = () => {
-        nums.forEach(el => {
-          const target = +el.dataset.target;
-          let current = 0;
-          const step = Math.max(1, Math.ceil(target / 60)); // ~1s-ish
-          const tick = () => {
-            current += step;
-            if (current < target) {
-              el.textContent = current;
-              requestAnimationFrame(tick);
-            } else {
-              el.textContent = target;
-            }
-          };
-          tick();
-        });
-      };
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('show'));
+      return;
+    }
 
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              startCounters();
-              io.disconnect();
-            }
-          });
-        }, { threshold: 0.3 });
-        io.observe(document.getElementById('outcomes'));
-      } else {
-        // Fallback: start immediately
-        startCounters();
-      }
-    })();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add('show');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-    // Optional: stagger reveal for FAQ (uses your .reveal/.show classes)
-    (function () {
-      const items = Array.from(document.querySelectorAll('#faq .faq.reveal'));
-      if (!('IntersectionObserver' in window) || !items.length) return;
+    els.forEach(el => io.observe(el));
+  })();
 
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const i = items.indexOf(entry.target);
-            entry.target.style.transitionDelay = `${i * 90}ms`;
-            entry.target.classList.add('show');
-            obs.unobserve(entry.target);
+  // KPI counters (run once when #outcomes becomes visible)
+  (function () {
+    const container = document.getElementById('outcomes');
+    if (!container) return;
+
+    const startCounters = () => {
+      container.querySelectorAll('.kpi-number').forEach((el) => {
+        if (el.dataset.counted === '1') return; // avoid re-running
+        el.dataset.counted = '1';
+        const target = Number(el.dataset.target || 0);
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const frames = 60;                          // ~1s
+        const step = Math.max(1, Math.round(target / frames));
+
+        const tick = () => {
+          current += step;
+          if (current < target) {
+            el.textContent = current + suffix;
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = target + suffix;
           }
-        });
-      }, { threshold: 0.15 });
+        };
+        tick();
+      });
+    };
 
-      items.forEach(el => obs.observe(el));
-    })();
-  </script>
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      startCounters();
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          startCounters();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    io.observe(container);
+  })();
+
+  // Optional: stagger reveal for FAQ items specifically
+  (function () {
+    const items = Array.from(document.querySelectorAll('#faq .faq.reveal'));
+    if (!('IntersectionObserver' in window) || !items.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const i = items.indexOf(entry.target);
+          entry.target.style.transitionDelay = `${i * 90}ms`;
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(el => obs.observe(el));
+  })();
+</script>
 </body>
 </html>
