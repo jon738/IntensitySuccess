@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#0b3a66">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b3a66" />
+
   <title>Intensity Success — AI Coaching & Consulting</title>
-  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see progress in your business and life." />
+  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see measurable progress in your business and life." />
   <link rel="canonical" href="https://intensitysuccess.com/">
 
   <!-- Open Graph / Twitter -->
@@ -15,16 +14,22 @@
   <meta property="og:description" content="Work smarter with AI-enhanced coaching. Clarity, systems, and momentum you can measure." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://intensitysuccess.com/" />
-  <meta property="og:image" content="https://intensitysuccess.com/og-image.jpg" />
+  <meta property="og:image" content="https://intensitysuccess.com/assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="#">Intensity Success</a>
+      <a class="logo" href="#top">Intensity Success</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="site-nav" aria-label="Primary">
         <a href="#services">Services</a>
@@ -34,36 +39,43 @@
     </div>
   </header>
 
-  <!-- HERO (Option 3: Human + Tech) -->
-  <section class="hero hero-split">
+  <!-- HERO -->
+  <section class="hero hero-split" id="top">
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">AI Coaching • Systems • Clarity</p>
         <h1>Where human potential meets artificial intelligence.</h1>
         <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="#services">Start the Transformation</a>
           <a class="btn" href="#about">Learn More</a>
         </div>
+
         <ul class="hero-points">
           <li>AI-assisted strategy & weekly coaching</li>
           <li>Habit systems and lightweight automation</li>
           <li>Clear 90-day outcomes you can measure</li>
         </ul>
       </div>
-<div class="ai-visual" aria-hidden="true">
-  <div class="ai-blob"></div>
 
-  <!-- Try PNG first; if it 404s, fall back to the JPEG automatically -->
-  <img
-    class="ai-brain"
-    src="assets/ai-brain.png?v=5"
-    alt="Stylized AI Brain"
-    loading="eager"
-    decoding="async"
-    onerror="this.onerror=null; this.src='assets/AI_Brain.jpeg?v=5';"
-  />
-</div>
+      <!-- Visual (glow + transparent brain PNG) -->
+      <div class="ai-visual" aria-hidden="true">
+        <div class="ai-blob"></div>
+
+        <!-- Use the transparent PNG; JPEG listed as fallback via <picture> -->
+        <picture>
+          <source srcset="assets/ai-brain-transparent.png?v=6" type="image/png" />
+          <img
+            class="ai-brain"
+            src="assets/ai-brain-transparent.png?v=6"
+            alt="Stylized AI brain"
+            width="1024" height="1024"
+            loading="eager" decoding="async"
+          />
+        </picture>
+      </div>
+    </div> <!-- ← closes .container.hero-grid -->
   </section>
 
   <main>
@@ -74,15 +86,18 @@
           <h2>Services</h2>
           <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
         </div>
+
         <div class="grid-3">
           <article class="card reveal">
             <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
             <p>Deep-dive session + a clear 90-day roadmap covering goals, metrics, and the highest-leverage actions. Includes a one-page plan and execution cadence.</p>
           </article>
+
           <article class="card reveal">
             <h3>🤖 Systems & AI Automation</h3>
             <p>Streamline workflows with AI: research, drafting, CRM updates, inbox triage, and repeatable playbooks so you stop drowning in busywork.</p>
           </article>
+
           <article class="card reveal">
             <h3>🎯 Coaching & Accountability</h3>
             <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
@@ -112,6 +127,8 @@
       <div class="container narrow">
         <h2>Contact</h2>
         <p class="form-note" style="margin-bottom:12px;">Tell me a bit about your goals and timeline. I’ll reply with next steps and a link to book a call.</p>
+
+        <!-- Replace 'yourid' with your actual Formspree ID -->
         <form class="contact" action="https://formspree.io/f/yourid" method="POST">
           <label>
             <span>Name</span>
@@ -142,7 +159,27 @@
     </div>
   </footer>
 
-  <!-- Keep your existing script.js in the repo -->
-  <script src="script.js"></script>
+  <!-- Small helpers -->
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Sticky header state
+    const onScroll = () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile menu
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
