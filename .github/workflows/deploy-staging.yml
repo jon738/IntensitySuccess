@@ -7,18 +7,35 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: pages-staging
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # If your site is plain HTML/CSS/JS, this next step publishes directly.
-      - name: Push to staging repo gh-pages
+      - name: Setup git user
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # If you add a build later (e.g., npm run build), change publish_dir to your build folder
+      - name: Deploy to STAGING external repo
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.STAGING_TOKEN }}
           external_repository: jon738/intensitysuccess-staging
           publish_branch: gh-pages
-          publish_dir: ./
+          publish_dir: ./           # change to ./dist if you add a build step
+          force_orphan: true
+          exclude_assets: |
+            .github
+            .gitignore
+            README.md
+            LICENSE
