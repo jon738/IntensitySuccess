@@ -35,3 +35,23 @@ window.addEventListener('scroll', () => {
 });
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// ===== Staggered reveal for FAQ cards =====
+(function () {
+  const items = Array.from(document.querySelectorAll('#faq .faq.reveal'));
+  if (!('IntersectionObserver' in window) || items.length === 0) return;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Stagger by index (90ms steps)
+        const i = items.indexOf(entry.target);
+        entry.target.style.transitionDelay = `${i * 90}ms`;
+        entry.target.classList.add('show');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { root: null, threshold: 0.15 });
+
+  items.forEach(el => obs.observe(el));
+})();
