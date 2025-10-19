@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
       <a class="logo" href="#">Intensity Success</a>
@@ -31,45 +32,45 @@
     </div>
   </header>
 
-<!-- HERO -->
-<section class="hero hero-split">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">AI Coaching • Systems • Clarity</p>
-      <h1>Where human potential meets artificial intelligence.</h1>
-      <p>
-        Personalized coaching powered by AI insights to transform how you think,
-        plan, and perform — in business and life.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#services">Start the Transformation</a>
-        <a class="btn" href="#about">Learn More</a>
-      </div>
-
-      <ul class="hero-points">
-        <li>AI-assisted strategy & weekly coaching</li>
-        <li>Habit systems and lightweight automation</li>
-        <li>Clear 90-day outcomes you can measure</li>
-      </ul>
-    </div>
-
-    <!-- Visual side (EXACTLY ONE) -->
-    <div class="ai-visual" aria-hidden="true">
-      <div class="ai-blob"></div>
-      <div class="ai-grid"></div>
-      <img
-        class="ai-brain"
-        src="assets/ai-brain.webp?v=4"
-        alt="Stylized AI brain"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-  </div>
-</section>
-
   <main>
+    <!-- HERO -->
+    <section class="hero hero-split">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">AI Coaching • Systems • Clarity</p>
+          <h1>Where human potential meets artificial intelligence.</h1>
+          <p>
+            Personalized coaching powered by AI insights to transform how you think,
+            plan, and perform — in business and life.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Start the Transformation</a>
+            <a class="btn" href="#about">Learn More</a>
+          </div>
+
+          <ul class="hero-points">
+            <li>AI-assisted strategy & weekly coaching</li>
+            <li>Habit systems and lightweight automation</li>
+            <li>Clear 90-day outcomes you can measure</li>
+          </ul>
+        </div>
+
+        <!-- Visual side -->
+        <div class="ai-visual" aria-hidden="true">
+          <div class="ai-blob"></div>
+          <div class="ai-grid"></div>
+          <img
+            class="ai-brain"
+            src="assets/ai-brain.webp?v=4"
+            alt="Stylized AI brain"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
     <!-- Services -->
     <section id="services" class="section">
       <div class="container">
@@ -89,6 +90,31 @@
           <article class="card reveal">
             <h3>🎯 Coaching & Accountability</h3>
             <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes / Proof (KPIs) -->
+    <section id="outcomes" class="section">
+      <div class="container">
+        <div class="narrow" style="text-align:center; margin-bottom:28px;">
+          <h2>Results you can measure in 90 days</h2>
+          <p class="form-note" style="margin:8px 0 0;">Clear, trackable improvements — not vague inspiration.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card kpi">
+            <h3><span class="kpi-number" data-target="35">0</span>%</h3>
+            <p>Avg. increase in deep-work hours per week</p>
+          </article>
+          <article class="card kpi">
+            <h3><span class="kpi-number" data-target="28">0</span>%</h3>
+            <p>Reduction in low-value tasks via lightweight automation</p>
+          </article>
+          <article class="card kpi">
+            <h3><span class="kpi-number" data-target="3">0</span>×</h3>
+            <p>More consistent shipping cadence</p>
           </article>
         </div>
       </div>
@@ -134,81 +160,118 @@
       </div>
     </section>
 
-   <!-- FAQ -->
-<section id="faq" class="section alt">
-  <div class="container narrow">
-    <h2>FAQ</h2>
+    <!-- FAQ -->
+    <section id="faq" class="section alt">
+      <div class="container narrow">
+        <h2>FAQ</h2>
 
-    <details class="faq reveal">
-      <summary>Who is this for?</summary>
-      <p>Founders, solo operators, and small teams who want clearer priorities and measurable momentum.</p>
-    </details>
+        <details class="faq reveal">
+          <summary>Who is this for?</summary>
+          <p>Founders, solo operators, and small teams who want clearer priorities and measurable momentum.</p>
+        </details>
 
-    <details class="faq reveal">
-      <summary>How do sessions work?</summary>
-      <p>Weekly or bi-weekly calls, async check-ins, and light ops support between sessions. Every week ends with a clear deliverable or refinement.</p>
-    </details>
+        <details class="faq reveal">
+          <summary>How do sessions work?</summary>
+          <p>Weekly or bi-weekly calls, async check-ins, and light ops support between sessions. Every week ends with a clear deliverable or refinement.</p>
+        </details>
 
-    <details class="faq reveal">
-      <summary>Can you integrate with our current tools?</summary>
-      <p>Yes — most clients use Notion, ClickUp, or Google Workspace. We’ll connect your existing tools to AI workflows and simple automations. No rebuilds required.</p>
-    </details>
+        <details class="faq reveal">
+          <summary>Can you integrate with our current tools?</summary>
+          <p>Yes — most clients use Notion, ClickUp, or Google Workspace. We’ll connect your existing tools to AI workflows and simple automations. No rebuilds required.</p>
+        </details>
 
-    <details class="faq reveal">
-      <summary>What if I just need a one-time strategy sprint?</summary>
-      <p>That’s what the <strong>90-Day Intensive</strong> is for. You’ll leave with a clear roadmap, measurable goals, and a system you can maintain yourself.</p>
-    </details>
-  </div>
-</section>
+        <details class="faq reveal">
+          <summary>What if I just need a one-time strategy sprint?</summary>
+          <p>That’s what the <strong>90-Day Intensive</strong> is for. You’ll leave with a clear roadmap, measurable goals, and a system you can maintain yourself.</p>
+        </details>
+      </div>
+    </section>
 
-<!-- Final CTA -->
-<section id="cta" class="section">
-  <div class="container narrow" style="text-align:center;">
-    <h2>Ready to build unstoppable momentum?</h2>
-    <p style="color:var(--muted); max-width:540px; margin:12px auto 24px;">
-      Start with a free discovery call to map your 90-day outcome and see if we’re a fit.
-    </p>
-    <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
-  </div>
-</section>
-
-  // --- Simple counter animation for KPIs ---
-  document.querySelectorAll(".kpi-number").forEach((el) => {
-    const target = +el.dataset.target;
-    let count = 0;
-    const speed = 40; // smaller = faster
-    const update = () => {
-      count += Math.ceil(target / 50);
-      if (count < target) {
-        el.textContent = count;
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = target;
-      }
-    };
-    update();
-  });
-
-</main>                  
-
-        <!-- Footer -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
-  </div>
-</footer>
-  // --- Auto update footer year ---
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+    <!-- Final CTA -->
+    <section id="cta" class="section">
+      <div class="container narrow" style="text-align:center;">
+        <h2>Ready to build unstoppable momentum?</h2>
+        <p style="color:var(--muted); max-width:540px; margin:12px auto 24px;">
+          Start with a free discovery call to map your 90-day outcome and see if we’re a fit.
+        </p>
+        <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
 
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script>
+    // Auto-update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // KPI counter: only when outcomes section is visible
+    (function () {
+      const nums = document.querySelectorAll('#outcomes .kpi-number');
+      if (!nums.length) return;
+
+      const startCounters = () => {
+        nums.forEach(el => {
+          const target = +el.dataset.target;
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 60)); // ~1s-ish
+          const tick = () => {
+            current += step;
+            if (current < target) {
+              el.textContent = current;
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = target;
+            }
+          };
+          tick();
+        });
+      };
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startCounters();
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        io.observe(document.getElementById('outcomes'));
+      } else {
+        // Fallback: start immediately
+        startCounters();
+      }
+    })();
+
+    // Optional: stagger reveal for FAQ (uses your .reveal/.show classes)
+    (function () {
+      const items = Array.from(document.querySelectorAll('#faq .faq.reveal'));
+      if (!('IntersectionObserver' in window) || !items.length) return;
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const i = items.indexOf(entry.target);
+            entry.target.style.transitionDelay = `${i * 90}ms`;
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      items.forEach(el => obs.observe(el));
+    })();
+  </script>
 </body>
 </html>
