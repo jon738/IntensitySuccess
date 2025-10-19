@@ -7,7 +7,7 @@
   <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see progress in your business and life." />
   <link rel="canonical" href="https://intensitysuccess.com/">
 
-  <!-- Open Graph / Twitter -->
+  <!-- Social -->
   <meta property="og:title" content="Intensity Success — AI Coaching & Consulting" />
   <meta property="og:description" content="Work smarter with AI-enhanced coaching. Clarity, systems, and momentum you can measure." />
   <meta property="og:type" content="website" />
@@ -15,14 +15,18 @@
   <meta property="og:image" content="https://intensitysuccess.com/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Fonts & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
       <a class="logo" href="#">Intensity Success</a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
       <nav class="site-nav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#about">About</a>
@@ -31,27 +35,32 @@
     </div>
   </header>
 
-  <!-- HERO (Option 3: Human + Tech) -->
+  <!-- HERO -->
   <section class="hero hero-split">
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">AI Coaching • Systems • Clarity</p>
         <h1>Where human potential meets artificial intelligence.</h1>
         <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="#services">Start the Transformation</a>
           <a class="btn" href="#about">Learn More</a>
         </div>
+
         <ul class="hero-points">
           <li>AI-assisted strategy & weekly coaching</li>
           <li>Habit systems and lightweight automation</li>
           <li>Clear 90-day outcomes you can measure</li>
         </ul>
       </div>
-      <!-- Visual side (pure CSS abstract AI motif) -->
+
+      <!-- Right visual: breathing grid + transparent brain -->
       <div class="ai-visual" aria-hidden="true">
         <div class="ai-blob"></div>
         <div class="ai-grid"></div>
+        <!-- Make sure this PNG is TRANSPARENT -->
+        <img class="ai-brain" src="assets/ai-brain.png?v=8" alt="" loading="eager" decoding="async">
       </div>
     </div>
   </section>
@@ -64,6 +73,7 @@
           <h2>Services</h2>
           <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
         </div>
+
         <div class="grid-3">
           <article class="card reveal">
             <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
@@ -85,10 +95,7 @@
     <section id="about" class="section alt">
       <div class="container narrow">
         <h2>About</h2>
-        <p>
-          Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create
-          clarity, systems, and momentum you can measure.
-        </p>
+        <p>Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create clarity, systems, and momentum you can measure.</p>
         <ul style="margin:14px 0 0; padding-left:18px; color: var(--muted); line-height:1.7;">
           <li>Clarity first: define the outcome, then cut steps.</li>
           <li>Systems over heroics: build processes that scale your time.</li>
@@ -122,6 +129,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
@@ -132,7 +140,6 @@
     </div>
   </footer>
 
-  <!-- Keep your existing script.js in the repo -->
   <script src="script.js"></script>
 </body>
 </html>
