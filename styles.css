@@ -83,11 +83,16 @@ body.scrolled .site-header{
 .hero-points li{margin:4px 0}
 
 /* === Clean Hero AI Visual (no grid image; supports transparent brain) === */
-.ai-visual{
-  position:relative;height:360px;width:100%;border-radius:32px;overflow:hidden;isolation:isolate;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 20px 40px rgba(11,58,102,.08);
-  background:radial-gradient(circle at 30% 40%,rgba(59,130,246,.08),transparent 60%);
+.ai-brain {
+  mix-blend-mode: lighten; /* enhances the glow instead of dull overlay */
+  filter: drop-shadow(0 0 28px rgba(59,130,246,0.45)) brightness(1.05);
+  opacity: 0.95;
+  transition: filter 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.ai-visual:hover .ai-brain {
+  filter: drop-shadow(0 0 38px rgba(59,130,246,0.65)) brightness(1.15);
+  opacity: 1;
 }
 
 /* Soft animated glowing light */
