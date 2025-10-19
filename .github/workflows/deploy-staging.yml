@@ -1,8 +1,10 @@
+# .github/workflows/deploy-staging.yml
 name: Deploy Staging (GitHub Pages)
 
 on:
   push:
-    branches: [ staging ]
+    branches:
+      - staging   # only deploy when the 'staging' branch is updated
 
 permissions:
   contents: read
@@ -11,14 +13,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # If your site is plain HTML/CSS/JS, this next step publishes directly.
-      - name: Push to staging repo gh-pages
+      - name: Deploy to staging repo (main branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.STAGING_TOKEN }}
-          external_repository: jon738/intensitysuccess-staging
-          publish_branch: gh-pages
-          publish_dir: ./
+          personal_token: ${{ secrets.STAGING_TOKEN }}   # must exist in IntensitySuccess repo
+          external_repository: jon738/IntensitySuccess-Staging
+          publish_branch: main           # staging Pages branch
+          publish_dir: ./                # publish from the repo root
+          exclude_assets: |
+            README.md
+            CNAME
+            .github/workflows
