@@ -51,10 +51,18 @@
           <li>Clear 90-day outcomes you can measure</li>
         </ul>
       </div>
-<!-- AI visual with animated grid + brain overlay -->
 <div class="ai-visual" aria-hidden="true">
   <div class="ai-blob"></div>
-  <img class="ai-brain" src="assets/ai-brain-transparent.png?v=3" alt="AI Brain Graphic">
+
+  <!-- Try PNG first; if it 404s, fall back to the JPEG automatically -->
+  <img
+    class="ai-brain"
+    src="assets/ai-brain.png?v=5"
+    alt="Stylized AI Brain"
+    loading="eager"
+    decoding="async"
+    onerror="this.onerror=null; this.src='assets/AI_Brain.jpeg?v=5';"
+  />
 </div>
   </section>
 
