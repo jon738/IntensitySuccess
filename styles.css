@@ -29,7 +29,6 @@ img { max-width: 100%; display: block; }
 .section { padding: 72px 0; }
 .section.alt { background: #ffffff; }
 
-/* Header / nav */
 /* === Glassmorphic Header (Blue-tinted Version) === */
 .site-header {
   position: sticky;
@@ -43,24 +42,17 @@ img { max-width: 100%; display: block; }
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Slightly stronger tint when scrolling */
+/* Stronger tint on scroll */
 body.scrolled .site-header {
   background: rgba(11, 58, 102, 0.4);
   box-shadow: 0 4px 16px rgba(11, 58, 102, 0.12);
 }
 
-/* Slightly darker on scroll */
-body.scrolled .site-header {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 16px rgba(11, 58, 102, 0.12);
-}
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
 .logo { font-weight: 700; letter-spacing:.2px; color: var(--brand-2); text-decoration: none; }
+
 /* === Navigation Link Glow Hover === */
-.site-nav {
-  display: flex;
-  gap: 18px;
-}
+.site-nav { display: flex; gap: 18px; }
 
 .site-nav a {
   position: relative;
@@ -71,7 +63,6 @@ body.scrolled .site-header {
   transition: color 0.3s ease;
 }
 
-/* glowing underline */
 .site-nav a::after {
   content: "";
   position: absolute;
@@ -87,25 +78,18 @@ body.scrolled .site-header {
   border-radius: 2px;
 }
 
-.site-nav a:hover {
-  color: var(--brand);
-}
+.site-nav a:hover { color: var(--brand); }
+.site-nav a:hover::after { opacity: 1; transform: scaleX(1); animation: linkPulse 2s linear infinite; }
 
-.site-nav a:hover::after {
-  opacity: 1;
-  transform: scaleX(1);
-  animation: linkPulse 2s linear infinite;
-}
-
-/* Gentle shimmer for the underline */
 @keyframes linkPulse {
   0% { filter: brightness(1); }
   50% { filter: brightness(1.4); }
   100% { filter: brightness(1); }
 }
+
 .menu-toggle { display:none; font-size: 20px; background:none; border:none; color:var(--brand-2); }
 
-/* HERO — split layout with abstract AI visual (no image needed) */
+/* === HERO — split layout === */
 .hero { 
   padding: 80px 0 70px; 
   background:
@@ -123,19 +107,23 @@ body.scrolled .site-header {
 .hero-points { margin: 16px 0 0; padding-left: 18px; color: var(--muted); }
 .hero-points li { margin: 4px 0; }
 
-/* === Brain-shaped AI visual === */
+/* === AI visual (perfect corners + soft lift shadow) === */
 .ai-visual {
   position: relative;
   height: 360px;
   width: 100%;
   border-radius: 32px;
-  overflow: hidden;
+  overflow: hidden;          /* clip blur inside rounded corners */
   isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 40px rgba(11, 58, 102, 0.08);
+  box-shadow:
+    0 20px 40px rgba(11, 58, 102, 0.08),  /* outer lift */
+    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* inner highlight */
 }
+
+/* Glowing brain overlay */
 .ai-brain {
   position: absolute;
   inset: 0;
@@ -149,24 +137,19 @@ body.scrolled .site-header {
 }
 
 @keyframes brainGlow {
-  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
-  100% { filter: brightness(1.15) drop-shadow(0 0 18px rgba(59,130,246,0.5)); }
+  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.30)); }
+  100% { filter: brightness(1.15) drop-shadow(0 0 18px rgba(59,130,246,0.50)); }
 }
-/* Core layers */
+
+/* Core layers (no SVG mask — keep full rounded panel) */
 .ai-blob,
 .ai-grid {
   position: absolute;
   inset: 0;
-  border-radius: 50%; /* softened internal edges */
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 350'><path d='M250,20 C120,20,40,100,60,200 C30,250,70,320,150,330 C200,340,230,320,250,300 C270,320,300,340,350,330 C430,320,470,250,440,200 C460,100,380,20,250,20Z' fill='white'/></svg>");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 350'><path d='M250,20 C120,20,40,100,60,200 C30,250,70,320,150,330 C200,340,230,320,250,300 C270,320,300,340,350,330 C430,320,470,250,440,200 C460,100,380,20,250,20Z' fill='white'/></svg>");
-  mask-repeat: no-repeat;
-  mask-size: contain;
+  border-radius: inherit; /* match container radius */
 }
 
-/* Keep your existing animations */
+/* Soft luminous “thinking” background */
 .ai-blob {
   background:
     radial-gradient(circle at 25% 35%, rgba(59,130,246,.55), transparent 60%),
@@ -176,6 +159,7 @@ body.scrolled .site-header {
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
 
+/* Breathing grid overlay */
 .ai-grid {
   background-image:
     linear-gradient(0deg, rgba(59,130,246,.18) 1px, transparent 1px),
@@ -187,27 +171,20 @@ body.scrolled .site-header {
   animation: gridGlow 10s ease-in-out infinite, gridDrift 30s linear infinite;
 }
 
-/* Keyframes: soft pulse + slow parallax drift */
+/* Keyframes */
 @keyframes blobPulse {
   0%   { transform: translate(0,0) scale(1);   filter: blur(22px); opacity: 0.9; }
   50%  { transform: translate(12px,-10px) scale(1.06); filter: blur(30px); opacity: 1; }
   100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: 0.95; }
 }
-
 @keyframes gridGlow {
   0%,100% {
-    box-shadow:
-      inset 0 0 0 1px rgba(59,130,246,.20),
-      0 22px 55px rgba(11,58,102,.14);
+    box-shadow: inset 0 0 0 1px rgba(59,130,246,.20), 0 22px 55px rgba(11,58,102,.14);
   }
   50% {
-    box-shadow:
-      inset 0 0 0 1px rgba(59,130,246,.38),
-      0 30px 70px rgba(11,58,102,.20);
+    box-shadow: inset 0 0 0 1px rgba(59,130,246,.38), 0 30px 70px rgba(11,58,102,.20);
   }
 }
-
-/* The grid slowly drifts to create parallax movement */
 @keyframes gridDrift {
   0%   { background-position: 0 0, 0 0; }
   50%  { background-position: 30px 10px, 20px 5px; }
@@ -216,7 +193,7 @@ body.scrolled .site-header {
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .ai-blob, .ai-grid { animation: none !important; }
+  .ai-blob, .ai-grid, .ai-brain { animation: none !important; }
 }
 
 /* === Buttons (Glass + Glow refinement) === */
@@ -234,14 +211,12 @@ body.scrolled .site-header {
   position: relative;
 }
 
-/* Primary (blue gradient) */
 .btn-primary {
   background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
   color: #fff;
   border: none;
   box-shadow: 0 6px 16px rgba(59,130,246,0.25);
 }
-
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(59,130,246,0.45);
@@ -257,7 +232,6 @@ body.scrolled .site-header {
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-
 .btn:not(.btn-primary):hover {
   transform: translateY(-3px);
   background: rgba(255,255,255,0.35);
@@ -268,6 +242,7 @@ body.scrolled .site-header {
 .btn, .btn-primary {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.4s ease, color 0.3s ease;
 }
+
 /* Cards / grid */
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .card {
@@ -306,7 +281,7 @@ body.scrolled .site-header {
 .footer-links a { color: var(--brand-2); text-decoration: none; font-weight:500; }
 .footer-links a:hover { color: var(--brand); }
 
-/* Scroll reveal utility (optional – add class="reveal") */
+/* Scroll reveal */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.show { opacity: 1; transform: translateY(0); }
 
