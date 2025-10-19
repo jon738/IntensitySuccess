@@ -53,7 +53,7 @@
         <div class="ai-blob"></div>
         <div class="ai-grid"></div>
 
-        <!-- Inline SVG brain (transparent by design) -->
+        <!-- Improved inline SVG brain -->
         <svg class="ai-brain-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized AI brain">
           <defs>
             <linearGradient id="brainStroke" x1="0" y1="0" x2="1" y2="1">
@@ -61,20 +61,63 @@
               <stop offset="100%" stop-color="#0b3a66"/>
             </linearGradient>
           </defs>
-          <g fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Left hemisphere -->
-            <path d="M256 92c-76 0-128 46-128 116 0 21-24 35-24 72 0 65 46 110 110 110 18 0 28 18 28 36 0 16-6 30-10 38"/>
-            <path d="M206 156c-32 10-56 34-56 66 0 24 14 38 34 48"/>
-            <path d="M176 308c-18 10-30 26-30 44 0 26 20 44 46 44"/>
-            <path d="M230 226c-32 10-48 28-48 50 0 18 14 30 32 40"/>
-            <!-- Midline -->
-            <path d="M256 116v288"/>
-            <!-- Right hemisphere -->
-            <path d="M256 92c76 0 128 46 128 116 0 21 24 35 24 72 0 65-46 110-110 110-18 0-28 18-28 36 0 16 6 30 10 38"/>
-            <path d="M306 156c32 10 56 34 56 66 0 24-14 38-34 48"/>
-            <path d="M336 308c18 10 30 26 30 44 0 26-20 44-46 44"/>
-            <path d="M282 226c32 10 48 28 48 50 0 18-14 30-32 40"/>
-          </g>
+
+          <!-- Outer lobed silhouette -->
+          <path d="
+            M256 84
+            c-44 0-78 16-101 48
+            c-19 26-25 54-22 83
+            c-18 19-27 42-27 69
+            c0 33 12 58 36 77
+            c6 45 35 67 80 67
+            c25 0 48-8 66-25
+            c18 17 41 25 66 25
+            c45 0 74-22 80-67
+            c24-19 36-44 36-77
+            c0-27-9-50-27-69
+            c3-29-3-57-22-83
+            c-23-32-57-48-101-48
+            z"
+            fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Midline -->
+          <path d="M256 112 v288" fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+
+          <!-- Left hemisphere curls -->
+          <path d="M240 148
+                   c-28-18-82 12-82 56
+                   c0 22 14 34 30 38" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M230 214
+                   c-30 6-54 22-54 46
+                   c0 18 12 30 28 36" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M224 276
+                   c-36-10-66 12-66 42
+                   c0 26 22 42 48 42" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M232 330
+                   c-24 8-36 22-36 40
+                   c0 18 16 30 36 30" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+
+          <!-- Right hemisphere curls -->
+          <path d="M272 148
+                   c28-18 82 12 82 56
+                   c0 22-14 34-30 38" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M282 214
+                   c30 6 54 22 54 46
+                   c0 18-12 30-28 36" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M288 276
+                   c36-10 66 12 66 42
+                   c0 26-22 42-48 42" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M280 330
+                   c24 8 36 22 36 40
+                   c0 18-16 30-36 30" 
+                fill="none" stroke="url(#brainStroke)" stroke-width="14" stroke-linecap="round"/>
         </svg>
       </div>
     </div>
@@ -156,9 +199,7 @@
   </footer>
 
   <script>
-    // year
     document.getElementById('year').textContent = new Date().getFullYear();
-    // header tint
     document.addEventListener('scroll', () => {
       document.body.classList.toggle('scrolled', window.scrollY > 10);
     });
