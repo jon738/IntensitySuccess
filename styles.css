@@ -116,64 +116,65 @@ body.scrolled .site-header{
 .hero-points{ margin:16px 0 0; padding-left:18px; color: var(--muted); }
 .hero-points li{ margin:4px 0; }
 
-/* ---------- AI Visual (clean, no grid) ---------- */
-.ai-visual{
+/* === Hero AI Visual (Transparent Brain + Soft Glow) === */
+.ai-visual {
   position: relative;
-  height: 360px; width: 100%;
-  border-radius: 32px; overflow: hidden; isolation: isolate;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: 0 20px 40px rgba(11,58,102,.10), 0 60px 120px rgba(11,58,102,.08);
-  background: radial-gradient(circle at 30% 40%, rgba(59,130,246,.10) 0%, transparent 60%);
+  height: 360px;
+  width: 100%;
+  border-radius: 32px;
+  overflow: visible; /* allows soft light outside bounds */
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none; /* remove the cloudy overlay */
 }
 
-/* Soft animated light blob behind the brain */
-.ai-blob{
-  position:absolute; inset:-20px; border-radius:50%;
-  background:
-    radial-gradient(circle at 25% 35%, rgba(59,130,246,.45), transparent 60%),
-    radial-gradient(circle at 75% 65%, rgba(11,58,102,.45), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,255,255,.25));
-  filter: blur(28px);
+/* Soft animated light glow behind brain */
+.ai-blob {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 40%, rgba(59,130,246,.25), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(11,58,102,.25), transparent 60%);
+  filter: blur(60px);
   animation: blobPulse 8s ease-in-out infinite alternate;
-}
-@keyframes blobPulse{
-  0%{   transform: translate(0,0) scale(1);   filter: blur(22px); opacity:.75; }
-  50%{  transform: translate(12px,-10px) scale(1.06); filter: blur(30px); opacity:1; }
-  100%{ transform: translate(-6px,4px) scale(1.02);  filter: blur(24px); opacity:.82; }
+  z-index: 0;
 }
 
-/* Transparent brain image (PNG) OR inline SVG */
-.ai-brain,
-.ai-brain-svg{
-  position: relative; z-index:2;
-  width: 80%; max-width: 420px; height: auto;
-  pointer-events: none;
-  /* important for transparent PNG to blend with glow: */
-  background: transparent !important;
+@keyframes blobPulse {
+  0%   { transform: translate(0,0) scale(1); opacity: 0.6; }
+  50%  { transform: translate(12px,-10px) scale(1.1); opacity: 0.9; }
+  100% { transform: translate(-6px,4px) scale(1.05); opacity: 0.7; }
+}
+
+/* Transparent brain PNG styling */
+.ai-brain {
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  max-width: 420px;
+  height: auto;
+  opacity: 0.95;
   mix-blend-mode: screen;
-  opacity: .95;
+  pointer-events: none;
+  filter: drop-shadow(0 0 18px rgba(59,130,246,0.3));
   animation:
     brainGlow 6s ease-in-out infinite alternate,
     brainFloat 12s ease-in-out infinite;
-  transition: filter 1s ease-in-out, opacity 1s ease-in-out, transform .6s ease;
 }
 
-/* Glow pulse + gentle float */
-@keyframes brainGlow{
-  0%  { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,.30)); }
-  100%{ filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,.55)); }
-}
-@keyframes brainFloat{
-  0%{   transform: translateY(0) scale(1); }
-  50%{  transform: translateY(-8px) scale(1.02); }
-  100%{ transform: translateY(0) scale(1); }
+/* Light pulse and gentle motion */
+@keyframes brainGlow {
+  0%   { filter: drop-shadow(0 0 10px rgba(59,130,246,0.25)) brightness(1); }
+  100% { filter: drop-shadow(0 0 24px rgba(59,130,246,0.6)) brightness(1.1); }
 }
 
-/* Subtle interactive pop */
-.ai-visual:hover .ai-brain,
-.ai-visual:hover .ai-brain-svg{
-  filter: drop-shadow(0 0 36px rgba(59,130,246,.65)) brightness(1.1);
-  opacity: 1;
+@keyframes brainFloat {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-8px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 /* =========================================================
