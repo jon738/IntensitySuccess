@@ -123,6 +123,7 @@ body.scrolled .site-header {
     inset 0 1px 0 rgba(255, 255, 255, 0.25); /* inner highlight */
 }
 
+/* === Glowing & Floating Brain === */
 .ai-brain {
   position: absolute;
   inset: 0;
@@ -132,12 +133,22 @@ body.scrolled .site-header {
   opacity: 0.9;
   mix-blend-mode: screen;
   pointer-events: none;
-  animation: brainGlow 6s ease-in-out infinite alternate;
+  animation:
+    brainGlow 6s ease-in-out infinite alternate,
+    brainFloat 12s ease-in-out infinite;
 }
 
+/* Glow pulse */
 @keyframes brainGlow {
   0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
   100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,0.5)); }
+}
+
+/* Gentle floating motion */
+@keyframes brainFloat {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-8px) scale(1.015); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 /* Core layers (no SVG mask — keep full rounded panel) */
