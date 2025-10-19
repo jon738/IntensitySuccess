@@ -56,9 +56,53 @@ body.scrolled .site-header {
 }
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
 .logo { font-weight: 700; letter-spacing:.2px; color: var(--brand-2); text-decoration: none; }
-.site-nav { display: flex; gap: 18px; }
-.site-nav a { color: var(--brand-2); text-decoration: none; padding: 8px 10px; border-radius: 8px; font-weight:500; }
-.site-nav a:hover { color: var(--brand); background: rgba(59,130,246,.1); }
+/* === Navigation Link Glow Hover === */
+.site-nav {
+  display: flex;
+  gap: 18px;
+}
+
+.site-nav a {
+  position: relative;
+  color: var(--brand-2);
+  text-decoration: none;
+  padding: 8px 10px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* glowing underline */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  opacity: 0;
+  transform: scaleX(0.2);
+  transform-origin: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  border-radius: 2px;
+}
+
+.site-nav a:hover {
+  color: var(--brand);
+}
+
+.site-nav a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  animation: linkPulse 2s linear infinite;
+}
+
+/* Gentle shimmer for the underline */
+@keyframes linkPulse {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}
 .menu-toggle { display:none; font-size: 20px; background:none; border:none; color:var(--brand-2); }
 
 /* HERO — split layout with abstract AI visual (no image needed) */
