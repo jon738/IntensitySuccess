@@ -4,10 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Intensity Success — AI Coaching & Consulting</title>
+
+  <!-- Social -->
+  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see progress in your business and life." />
+  <meta property="og:title" content="Intensity Success — AI Coaching & Consulting" />
+  <meta property="og:description" content="Work smarter with AI-enhanced coaching. Clarity, systems, and momentum you can measure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://intensitysuccess.com/" />
+  <meta property="og:image" content="https://intensitysuccess.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
       <a class="logo" href="#">Intensity Success</a>
@@ -19,6 +30,7 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero hero-split">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -36,12 +48,12 @@
         </ul>
       </div>
 
-      <!-- Visual: breathing grid + SVG brain (transparent) -->
+      <!-- Visual: breathing grid + transparent brain (SVG) -->
       <div class="ai-visual" aria-hidden="true">
         <div class="ai-blob"></div>
         <div class="ai-grid"></div>
 
-        <!-- Inline SVG brain (transparent, no background) -->
+        <!-- Inline SVG brain (transparent by design) -->
         <svg class="ai-brain-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized AI brain">
           <defs>
             <linearGradient id="brainStroke" x1="0" y1="0" x2="1" y2="1">
@@ -49,19 +61,15 @@
               <stop offset="100%" stop-color="#0b3a66"/>
             </linearGradient>
           </defs>
-
-          <!-- Outline style; no fill means fully transparent background -->
           <g fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Left hemisphere (stylized curves) -->
+            <!-- Left hemisphere -->
             <path d="M256 92c-76 0-128 46-128 116 0 21-24 35-24 72 0 65 46 110 110 110 18 0 28 18 28 36 0 16-6 30-10 38"/>
             <path d="M206 156c-32 10-56 34-56 66 0 24 14 38 34 48"/>
             <path d="M176 308c-18 10-30 26-30 44 0 26 20 44 46 44"/>
             <path d="M230 226c-32 10-48 28-48 50 0 18 14 30 32 40"/>
-
             <!-- Midline -->
             <path d="M256 116v288"/>
-
-            <!-- Right hemisphere (mirrored curves) -->
+            <!-- Right hemisphere -->
             <path d="M256 92c76 0 128 46 128 116 0 21 24 35 24 72 0 65-46 110-110 110-18 0-28 18-28 36 0 16 6 30 10 38"/>
             <path d="M306 156c32 10 56 34 56 66 0 24-14 38-34 48"/>
             <path d="M336 308c18 10 30 26 30 44 0 26-20 44-46 44"/>
@@ -72,10 +80,85 @@
     </div>
   </section>
 
-  <!-- … your remaining sections … -->
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="narrow" style="text-align:center; margin-bottom:28px;">
+        <h2>Services</h2>
+        <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
+          <p>Deep-dive session + a clear 90-day roadmap covering goals, metrics, and the highest-leverage actions. Includes a one-page plan and execution cadence.</p>
+        </article>
+        <article class="card">
+          <h3>🤖 Systems & AI Automation</h3>
+          <p>Streamline workflows with AI: research, drafting, CRM updates, inbox triage, and repeatable playbooks so you stop drowning in busywork.</p>
+        </article>
+        <article class="card">
+          <h3>🎯 Coaching & Accountability</h3>
+          <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section alt">
+    <div class="container narrow">
+      <h2>About</h2>
+      <p>
+        Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create
+        clarity, systems, and momentum you can measure.
+      </p>
+      <ul style="margin:14px 0 0; padding-left:18px; color: var(--muted); line-height:1.7;">
+        <li>Clarity first: define the outcome, then cut steps.</li>
+        <li>Systems over heroics: build processes that scale your time.</li>
+        <li>Action bias: small wins compounded weekly beat big plans never shipped.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container narrow">
+      <h2>Contact</h2>
+      <p class="form-note" style="margin-bottom:12px;">Tell me a bit about your goals and timeline. I’ll reply with next steps and a link to book a call.</p>
+      <form class="contact" action="https://formspree.io/f/yourid" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>What are you trying to achieve in the next 90 days?</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Request Discovery Call</button>
+        <p class="form-note">Prefer email? <a href="mailto:hello@intensitysuccess.com">hello@intensitysuccess.com</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // optional: sticky header tint on scroll
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // header tint
     document.addEventListener('scroll', () => {
       document.body.classList.toggle('scrolled', window.scrollY > 10);
     });
