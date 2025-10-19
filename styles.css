@@ -30,23 +30,23 @@ img { max-width: 100%; display: block; }
 .section.alt { background: #ffffff; }
 
 /* Header / nav */
-/* === Glassmorphic Header (More Transparent Version) === */
+/* === Glassmorphic Header (Blue-tinted Version) === */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.25); /* lighter white tint */
+  background: rgba(11, 58, 102, 0.25); /* subtle blue tint */
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 2px 12px rgba(11, 58, 102, 0.05);
+  box-shadow: 0 2px 12px rgba(11, 58, 102, 0.08);
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Slightly stronger on scroll */
+/* Slightly stronger tint when scrolling */
 body.scrolled .site-header {
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 16px rgba(11, 58, 102, 0.08);
+  background: rgba(11, 58, 102, 0.4);
+  box-shadow: 0 4px 16px rgba(11, 58, 102, 0.12);
 }
 
 /* Slightly darker on scroll */
