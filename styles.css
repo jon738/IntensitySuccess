@@ -252,6 +252,7 @@ body.scrolled .site-header{
   grid-template-columns:repeat(3, minmax(0, 1fr));
   gap:24px;
 }
+
 .card{
   background:#fff;              /* var(--panel) is fine too */
   border:1px solid rgba(0,0,0,.06);
@@ -391,7 +392,11 @@ body.scrolled .site-header{
 #outcomes .grid-3 {
   align-items: stretch;
 }
-
+@media (max-width: 900px) {
+  #outcomes .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
 .card.kpi {
   text-align: center;
   padding: 28px 26px;
@@ -563,17 +568,7 @@ body.scrolled .site-header{
   #process .process li { padding-left: 52px; }
   #process .process li::before { left: 14px; }
 }
-/* FAQ card styling (card look + caret) */
-#faq details.faq{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius: var(--radius-md);
-  padding:14px 16px;
-  margin-bottom:12px;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
-  will-change: transform, box-shadow, opacity;
-}
+
 #faq details.faq:hover{ box-shadow: 0 10px 28px rgba(11,58,102,.12); }
 #faq details.faq summary{
   cursor:pointer; list-style:none; font-weight:600; color:var(--brand-2);
