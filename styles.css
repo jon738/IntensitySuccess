@@ -5,7 +5,7 @@
 
 /* Base / reset */
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }      /* allow scrolling */
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -65,11 +65,11 @@ body.scrolled .site-header{
   position:relative;
   height:420px;
   border-radius:28px;
-  overflow:hidden;            /* keep glow inside */
+  overflow:hidden;
   isolation:isolate;
 }
 
-/* Soft glowing light */
+/* Glow */
 .ai-blob{
   position:absolute; inset:-24px; border-radius:32px; filter:blur(26px);
   background:
@@ -84,7 +84,7 @@ body.scrolled .site-header{
   100%{ transform:translate(-6px,4px) scale(1.02); opacity:.9; }
 }
 
-/* Grid layer */
+/* Grid */
 .ai-grid{
   position:absolute; inset:0; border-radius:28px;
   background-image:
@@ -106,13 +106,13 @@ body.scrolled .site-header{
   100%{ background-position:0 0,0 0; }
 }
 
-/* Brain (SVG) — fully transparent background */
+/* Brain (SVG) */
 .ai-brain-svg{
   position:absolute; left:50%; top:50%;
-  transform:translate(-50%,-50%);           /* true center */
-  width:78%; height:auto;
+  transform:translate(-50%,-50%);
+  width:84%; height:auto;       /* a touch larger, still centered */
   pointer-events:none; display:block;
-  filter:none; mix-blend-mode:normal;        /* avoid matte/boxing */
+  filter:none; mix-blend-mode:normal;
   animation: brainFloat 12s ease-in-out infinite;
 }
 @keyframes brainFloat{
