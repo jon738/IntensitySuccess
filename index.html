@@ -26,9 +26,9 @@
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="site-nav" aria-label="Primary">
         <a href="#services">Services</a>
+        <a href="#outcomes">Outcomes</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a href="#about">About</a>
       </nav>
     </div>
   </header>
@@ -47,7 +47,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#services">Start the Transformation</a>
-            <a class="btn" href="#about">Learn More</a>
+            <a class="btn" href="#faq">Learn More</a>
           </div>
 
           <ul class="hero-points">
@@ -57,7 +57,7 @@
           </ul>
         </div>
 
-        <!-- Visual -->
+        <!-- Visual side -->
         <div class="ai-visual" aria-hidden="true">
           <div class="ai-blob"></div>
           <div class="ai-grid"></div>
@@ -75,9 +75,9 @@
     <!-- Services -->
     <section id="services" class="section">
       <div class="container">
-        <div class="narrow" style="text-align:center; margin-bottom:28px;">
+        <div class="narrow section-intro">
           <h2>Services</h2>
-          <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
+          <p>No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
         </div>
 
         <div class="grid-3">
@@ -85,10 +85,12 @@
             <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
             <p>Deep-dive session + a clear 90-day roadmap covering goals, metrics, and the highest-leverage actions. Includes a one-page plan and execution cadence.</p>
           </article>
+
           <article class="card reveal">
             <h3>🤖 Systems & AI Automation</h3>
             <p>Streamline workflows with AI: research, drafting, CRM updates, inbox triage, and repeatable playbooks so you stop drowning in busywork.</p>
           </article>
+
           <article class="card reveal">
             <h3>🎯 Coaching & Accountability</h3>
             <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
@@ -97,32 +99,34 @@
       </div>
     </section>
 
-    <!-- Outcomes -->
+    <!-- Outcomes / Proof (KPIs) -->
     <section id="outcomes" class="section">
       <div class="container">
-        <div class="narrow" style="text-align:center; margin-bottom:28px;">
+        <div class="narrow section-intro">
           <h2>Results you can measure in 90 days</h2>
-          <p class="form-note" style="margin:8px 0 0;">Clear, trackable improvements — not vague inspiration.</p>
+          <p>Clear, trackable improvements — not vague inspiration.</p>
         </div>
 
         <div class="grid-3">
           <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="35" data-suffix="%">0%</span></h3>
+            <h3><span class="kpi-number" data-target="35">0</span>%</h3>
             <p>Avg. increase in deep-work hours per week</p>
           </article>
+
           <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="28" data-suffix="%">0%</span></h3>
+            <h3><span class="kpi-number" data-target="28">0</span>%</h3>
             <p>Reduction in low-value tasks via lightweight automation</p>
           </article>
+
           <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="3" data-suffix="×">0×</span></h3>
+            <h3><span class="kpi-number" data-target="3">0</span>×</h3>
             <p>More consistent shipping cadence</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (moved before Contact) -->
     <section id="faq" class="section alt">
       <div class="container narrow">
         <h2>FAQ</h2>
@@ -149,11 +153,12 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact (after FAQ now) -->
     <section id="contact" class="section">
       <div class="container narrow">
         <h2>Contact</h2>
         <p class="form-note" style="margin-bottom:12px;">Tell me a bit about your goals and timeline. I’ll reply with next steps and a link to book a call.</p>
+
         <form class="contact" action="https://formspree.io/f/yourid" method="POST">
           <label>
             <span>Name</span>
@@ -173,6 +178,17 @@
       </div>
     </section>
 
+    <!-- Final CTA -->
+    <section id="cta" class="section">
+      <div class="container narrow" style="text-align:center;">
+        <h2>Ready to build unstoppable momentum?</h2>
+        <p style="color:var(--muted); max-width:540px; margin:12px auto 24px;">
+          Start with a free discovery call to map your 90-day outcome and see if we’re a fit.
+        </p>
+        <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+      </div>
+    </section>
+
     <!-- About (moved to bottom) -->
     <section id="about" class="section alt">
       <div class="container narrow">
@@ -188,17 +204,6 @@
         </ul>
       </div>
     </section>
-
-    <!-- CTA -->
-    <section id="cta" class="section">
-      <div class="container narrow" style="text-align:center;">
-        <h2>Ready to build unstoppable momentum?</h2>
-        <p style="color:var(--muted); max-width:540px; margin:12px auto 24px;">
-          Start with a free discovery call to map your 90-day outcome and see if we’re a fit.
-        </p>
-        <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
@@ -212,8 +217,87 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Footer year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // Header scrolled state
+    const onScroll = () => {
+      if (window.scrollY > 6) document.body.classList.add('scrolled');
+      else document.body.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    // Reveal-on-scroll (IntersectionObserver)
+    (function () {
+      const revealEls = document.querySelectorAll('.reveal');
+      if (!revealEls.length) return;
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add('show');
+              io.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('show'));
+      }
+    })();
+
+    // KPI counters when #outcomes enters viewport
+    (function () {
+      const section = document.getElementById('outcomes');
+      const nums = section ? section.querySelectorAll('.kpi-number') : [];
+      if (!nums.length) return;
+
+      const start = () => {
+        nums.forEach((el) => {
+          const target = +el.dataset.target || 0;
+          let current = 0;
+          const step = Math.max(1, Math.round(target / 60));
+          const tick = () => {
+            current += step;
+            if (current < target) {
+              el.textContent = current;
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = target;
+            }
+          };
+          tick();
+        });
+      };
+
+      if ('IntersectionObserver' in window && section) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              start();
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        io.observe(section);
+      } else {
+        start();
+      }
+    })();
   </script>
 </body>
 </html>
