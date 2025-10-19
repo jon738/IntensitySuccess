@@ -122,7 +122,7 @@ body.scrolled .site-header {
   background: radial-gradient(circle at 30% 40%, rgba(59,130,246,.08), transparent 60%);
 }
 
-/* Soft animated light blob */
+/* Soft animated glowing light */
 .ai-blob {
   position: absolute;
   inset: -20px;
@@ -131,47 +131,56 @@ body.scrolled .site-header {
     radial-gradient(circle at 25% 35%, rgba(59,130,246,.45), transparent 60%),
     radial-gradient(circle at 75% 65%, rgba(11,58,102,.45), transparent 60%),
     linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,255,255,.25));
-  filter: blur(24px);
+  filter: blur(28px);
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
 
 @keyframes blobPulse {
-  0%   { transform: translate(0,0) scale(1); filter: blur(22px); opacity: .8; }
+  0%   { transform: translate(0,0) scale(1); filter: blur(22px); opacity: 0.75; }
   50%  { transform: translate(12px,-10px) scale(1.06); filter: blur(30px); opacity: 1; }
-  100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: .85; }
+  100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: 0.8; }
 }
 
-/* Glowing, floating brain */
-.ai-brain {
+/* === Glowing, floating brain (works for transparent PNG or inline SVG) === */
+.ai-brain,
+.ai-brain-svg {
   position: relative;
   z-index: 2;
   width: 80%;
   max-width: 420px;
   height: auto;
-  opacity: .9;
-  mix-blend-mode: screen;
+  opacity: 0.9;
   pointer-events: none;
+  mix-blend-mode: screen;
   animation:
     brainGlow 6s ease-in-out infinite alternate,
     brainFloat 12s ease-in-out infinite;
 }
 
-/* Glow pulse */
+/* Glow pulse animation */
 @keyframes brainGlow {
-  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,.3)); }
-  100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,.5)); }
+  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
+  100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,0.55)); }
 }
 
-/* Gentle float motion */
+/* Gentle floating motion */
 @keyframes brainFloat {
   0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-8px) scale(1.015); }
+  50%  { transform: translateY(-8px) scale(1.02); }
   100% { transform: translateY(0) scale(1); }
 }
 
-/* Respect reduced-motion */
+/* Optional SVG-specific refinement */
+.ai-brain-svg {
+  filter: drop-shadow(0 0 12px rgba(59,130,246,0.3));
+}
+
+/* Respect user reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .ai-blob, .ai-brain { animation: none !important; }
+  .ai-blob, .ai-brain, .ai-brain-svg {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* === Buttons (Glass + Glow refinement) === */
