@@ -1,0 +1,24 @@
+name: Deploy Staging (GitHub Pages)
+
+on:
+  push:
+    branches: [ staging ]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # If your site is plain HTML/CSS/JS, this next step publishes directly.
+      - name: Push to staging repo gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.STAGING_TOKEN }}
+          external_repository: jon738/intensitysuccess-staging
+          publish_branch: gh-pages
+          publish_dir: ./
