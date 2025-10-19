@@ -36,6 +36,7 @@ window.addEventListener('scroll', () => {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
+<script>
 (() => {
   /* -------- Scroll reveal for .reveal -------- */
   const revealEls = document.querySelectorAll('.reveal');
@@ -112,6 +113,7 @@ window.addEventListener('load', revealOnScroll);
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
+</script>
 
   
 // ===== Staggered reveal for FAQ cards =====
