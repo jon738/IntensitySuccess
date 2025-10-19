@@ -32,7 +32,7 @@ body.scrolled .site-header{background:rgba(255,255,255,.75); box-shadow:0 10px 2
 .site-nav a:hover{color:var(--brand)}
 .menu-toggle{display:none; font-size:20px; background:none; border:none; color:var(--brand-2)}
 
-/* HERO layout */
+/* HERO */
 .hero{
   padding:80px 0 70px;
   background:
@@ -60,39 +60,39 @@ body.scrolled .site-header{background:rgba(255,255,255,.75); box-shadow:0 10px 2
 .btn-primary{border:none; color:#fff; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 24px rgba(59,130,246,.28)}
 .btn-primary:hover{filter:brightness(1.05); transform:translateY(-2px)}
 
-/* === Breathing Grid Card (no external images) === */
+/* === Breathing Grid Card + Brain === */
 .ai-visual{
   position:relative;
   width:100%;
-  max-width:520px;
-  aspect-ratio: 16 / 11;   /* wide card; change to 1/1 for square */
+  max-width:540px;
+  aspect-ratio: 1 / 1;       /* square card like the screenshot */
   border-radius:28px;
-  overflow:hidden;          /* contains the blur so it never bleeds */
+  overflow:hidden;           /* contains blur so it never bleeds to page */
   isolation:isolate;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.8));
   box-shadow:
-    0 18px 55px rgba(11,58,102,.12),
-    inset 0 0 0 1px rgba(59,130,246,.14);
-  background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
+    0 24px 70px rgba(11,58,102,.18),
+    inset 0 0 0 1px rgba(59,130,246,.16);
 }
 
-/* Soft animated light */
+/* Soft glowing backdrop inside the card */
 .ai-blob{
-  position:absolute; inset:-30% -20% -20% -30%;
+  position:absolute; inset:-25% -25% -25% -25%;
   border-radius:40px;
   background:
-    radial-gradient(circle at 25% 35%, rgba(59,130,246,.30), transparent 60%),
-    radial-gradient(circle at 75% 65%, rgba(11,58,102,.28), transparent 60%);
-  filter:blur(28px);
+    radial-gradient(600px 380px at 32% 34%, rgba(59,130,246,.30), transparent 65%),
+    radial-gradient(520px 330px at 70% 65%, rgba(11,58,102,.26), transparent 60%);
+  filter:blur(26px);
   animation:blobPulse 9s ease-in-out infinite alternate;
   z-index:0;
 }
 @keyframes blobPulse{
   0%   { transform:translate(0,0) scale(1);   opacity:.75 }
-  50%  { transform:translate(12px,-8px) scale(1.06); opacity:.95 }
+  50%  { transform:translate(10px,-8px) scale(1.05); opacity:.95 }
   100% { transform:translate(-6px,5px) scale(1.02); opacity:.85 }
 }
 
-/* Crisp grid + subtle glow */
+/* The animated grid surface */
 .ai-grid{
   position:absolute; inset:0; border-radius:inherit; z-index:1;
   background-image:
@@ -104,12 +104,26 @@ body.scrolled .site-header{background:rgba(255,255,255,.75); box-shadow:0 10px 2
 }
 @keyframes gridGlow{
   0%,100%{ box-shadow: inset 0 0 0 1px rgba(59,130,246,.18), 0 20px 50px rgba(11,58,102,.10) }
-  50%    { box-shadow: inset 0 0 0 1px rgba(59,130,246,.30), 0 26px 60px rgba(11,58,102,.14) }
+  50%    { box-shadow: inset 0 0 0 1px rgba(59,130,246,.32), 0 26px 60px rgba(11,58,102,.14) }
 }
 @keyframes gridDrift{
   0%   { background-position: 0 0, 0 0 }
   50%  { background-position: 28px 10px, 18px 6px }
   100% { background-position: 0 0, 0 0 }
+}
+
+/* Transparent brain PNG on top */
+.ai-brain{
+  position:absolute; inset:0; z-index:2;
+  width:82%; height:82%; margin:auto;
+  object-fit:contain; pointer-events:none;
+  filter: drop-shadow(0 6px 14px rgba(59,130,246,.25));
+  animation:brainFloat 12s ease-in-out infinite;
+}
+@keyframes brainFloat{
+  0%   { transform:translateY(0) }
+  50%  { transform:translateY(-8px) }
+  100% { transform:translateY(0) }
 }
 
 /* Cards */
@@ -142,7 +156,7 @@ body.scrolled .site-header{background:rgba(255,255,255,.75); box-shadow:0 10px 2
 /* Responsive */
 @media (max-width:1020px){
   .hero-grid{grid-template-columns:1fr}
-  .ai-visual{order:-1; max-width:520px; margin:0 auto}
+  .ai-visual{order:-1; margin:0 auto}
 }
 @media (max-width:700px){
   .menu-toggle{display:block}
