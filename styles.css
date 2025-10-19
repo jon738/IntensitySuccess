@@ -136,9 +136,9 @@ body.scrolled .site-header {
 }
 
 @keyframes blobPulse {
-  0%   { transform: translate(0,0) scale(1); filter: blur(22px); opacity: 0.8; }
+  0%   { transform: translate(0,0) scale(1); filter: blur(22px); opacity: .8; }
   50%  { transform: translate(12px,-10px) scale(1.06); filter: blur(30px); opacity: 1; }
-  100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: 0.85; }
+  100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: .85; }
 }
 
 /* Glowing, floating brain */
@@ -148,7 +148,7 @@ body.scrolled .site-header {
   width: 80%;
   max-width: 420px;
   height: auto;
-  opacity: 0.9;
+  opacity: .9;
   mix-blend-mode: screen;
   pointer-events: none;
   animation:
@@ -158,8 +158,8 @@ body.scrolled .site-header {
 
 /* Glow pulse */
 @keyframes brainGlow {
-  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,0.3)); }
-  100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,0.5)); }
+  0%   { filter: brightness(1) drop-shadow(0 0 10px rgba(59,130,246,.3)); }
+  100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,.5)); }
 }
 
 /* Gentle float motion */
@@ -167,6 +167,11 @@ body.scrolled .site-header {
   0%   { transform: translateY(0) scale(1); }
   50%  { transform: translateY(-8px) scale(1.015); }
   100% { transform: translateY(0) scale(1); }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .ai-blob, .ai-brain { animation: none !important; }
 }
 
 /* === Buttons (Glass + Glow refinement) === */
