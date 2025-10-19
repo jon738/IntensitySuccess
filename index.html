@@ -51,17 +51,36 @@
           <li>Clear 90-day outcomes you can measure</li>
         </ul>
       </div>
-<!-- AI visual with animated grid + brain overlay -->
+<!-- AI visual with animated grid + brain overlay (SVG version) -->
 <div class="ai-visual" aria-hidden="true">
   <div class="ai-blob"></div>
   <div class="ai-grid"></div>
-  <img
-    class="ai-brain"
-    src="assets/ai-brain.png"
-    alt=""
-    loading="eager"
-    fetchpriority="high"
-    decoding="async">
+
+  <svg class="ai-brain-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="brainStroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"  stop-color="#3b82f6"/>
+        <stop offset="100%" stop-color="#0b3a66"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Left hemisphere (stylized paths) -->
+    <path d="M256 96c-66 0-116 42-116 106 0 17-20 28-20 60 0 54 38 92 92 92 16 0 24 16 24 32 0 14-6 28-8 34"
+          fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M206 150c-28 8-50 28-50 56 0 20 12 32 28 40" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M178 284c-16 8-26 22-26 38 0 22 18 38 38 38" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M228 212c-28 8-42 22-42 42 0 16 12 28 28 36" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Midline -->
+    <path d="M256 120v272" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Right hemisphere (mirrored feel) -->
+    <path d="M256 96c66 0 116 42 116 106 0 17 20 28 20 60 0 54-38 92-92 92-16 0-24 16-24 32 0 14 6 28 8 34"
+          fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M306 150c28 8 50 28 50 56 0 20-12 32-28 40" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M334 284c16 8 26 22 26 38 0 22-18 38-38 38" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M284 212c28 8 42 22 42 42 0 16-12 28-28 36" fill="none" stroke="url(#brainStroke)" stroke-width="12" stroke-linecap="round"/>
+  </svg>
 </div>
   </section>
 
