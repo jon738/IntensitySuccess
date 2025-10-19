@@ -274,5 +274,83 @@
       items.forEach(el => obs.observe(el));
     })();
   </script>
+  <script>
+(() => {
+  /* -------- Scroll reveal for .reveal -------- */
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add('show');
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    // Fallback: reveal everything if IO isn't supported
+    revealEls.forEach((el) => el.classList.add('show'));
+  }
+
+  /* -------- KPI counters (run when Outcomes enters view) -------- */
+  const startCounters = (root = document) => {
+    root.querySelectorAll('.kpi-number').forEach((el) => {
+      const target = +el.dataset.target;
+      let current = 0;
+      const step = Math.max(1, Math.round(target / 60));
+
+      const tick = () => {
+        current += step;
+        if (current < target) {
+          el.textContent = current;
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target;
+        }
+      };
+      tick();
+    });
+  };
+
+  const outcomes = document.getElementById('outcomes');
+  if (outcomes && 'IntersectionObserver' in window) {
+    const counterObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            startCounters(outcomes);
+            counterObs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    counterObs.observe(outcomes);
+  } else {
+    // Fallback if no IO
+    startCounters();
+  }
+
+  /* -------- Header scrolled state -------- */
+  const onScroll = () => {
+    if (window.scrollY > 6) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll);
+
+  /* -------- Footer year -------- */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
