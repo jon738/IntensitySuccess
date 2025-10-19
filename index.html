@@ -99,35 +99,32 @@
       </div>
     </section>
 
-    <!-- Outcomes / Proof (KPIs) -->
-    <section id="outcomes" class="section">
-      <div class="container">
-        <div class="narrow section-intro">
-          <h2>Results you can measure in 90 days</h2>
-          <p>Clear, trackable improvements — not vague inspiration.</p>
-        </div>
+  <!-- Outcomes / Proof (KPIs) -->
+<section id="outcomes" class="section">
+  <div class="container">
+    <div class="narrow section-intro">
+      <h2>Results you can measure in 90 days</h2>
+      <p>Clear, trackable improvements — not vague inspiration.</p>
+    </div>
 
-        <div class="grid-3">
-          <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="35" data-suffix="%">0%</span></h3>
+    <div class="grid-3">
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="35" data-suffix="%">0%</span></h3>
         <p>Avg. increase in deep-work hours per week</p>
       </article>
 
-
-          <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="28" data-suffix="%">0%</span></h3>
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="28" data-suffix="%">0%</span></h3>
         <p>Reduction in low-value tasks via lightweight automation</p>
       </article>
 
-
-          <article class="card kpi reveal">
-            <h3><span class="kpi-number" data-target="3" data-suffix="×">0×</span></h3>
+      <article class="card kpi reveal">
+        <h3><span class="kpi-number" data-target="3" data-suffix="×">0×</span></h3>
         <p>More consistent shipping cadence</p>
       </article>
-          </article>
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- FAQ (moved before Contact) -->
     <section id="faq" class="section alt">
@@ -220,131 +217,107 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Footer year
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
+ <script>
+(() => {
+  // ----- Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile menu
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.site-nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
+  // ----- Mobile menu
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 
-    // Header scrolled state
-    const onScroll = () => {
-      if (window.scrollY > 6) document.body.classList.add('scrolled');
-      else document.body.classList.remove('scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll);
+  // ----- Header scrolled state
+  const onScroll = () => {
+    if (window.scrollY > 6) document.body.classList.add('scrolled');
+    else document.body.classList.remove('scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll);
 
-    // Reveal-on-scroll (IntersectionObserver)
-    (function () {
-      const revealEls = document.querySelectorAll('.reveal');
-      if (!revealEls.length) return;
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
+  // ----- Reveal-on-scroll (.reveal -> .show)
+  const setupReveal = () => {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
           entries.forEach((en) => {
             if (en.isIntersecting) {
               en.target.classList.add('show');
               io.unobserve(en.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        revealEls.forEach((el) => io.observe(el));
-      } else {
-        revealEls.forEach((el) => el.classList.add('show'));
-      }
-    })();
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      );
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('show'));
+    }
+  };
+  setupReveal();
 
-  <script>
-(() => {
-  // Helper: how many decimals the target has
+  // ----- KPI counters (keep symbols)
   const decimalsOf = (n) => {
     const s = String(n);
     return (s.split('.')[1] || '').length;
   };
 
-  // Animate all .kpi-number inside a root (section) once
   const startCounters = (root = document) => {
     root.querySelectorAll('.kpi-number').forEach((el) => {
-      if (el.dataset.animated === 'true') return;   // don't double-run
+      if (el.dataset.animated === 'true') return;
       el.dataset.animated = 'true';
 
-      // Detect prefix/number/suffix from current text (e.g., "$0%", "0×")
       const initial = el.textContent.trim();
-      const m = initial.match(/^(\D*)(-?\d+(?:\.\d+)?)(.*)$/); // prefix | number | suffix
-
-      // Prefer data- attrs; fall back to what we parsed from the text
+      const m = initial.match(/^(\D*)(-?\d+(?:\.\d+)?)(.*)$/); // prefix, number, suffix
       const prefix = el.dataset.prefix ?? (m ? m[1] : '');
       const suffix = el.dataset.suffix ?? (m ? m[3] : '');
-
-      // Target number (from data-target or parsed number)
       const target = Number(el.dataset.target ?? (m ? m[2] : 0)) || 0;
       const precision = decimalsOf(el.dataset.target ?? target);
 
-      // Choose step; smaller divisor => faster
       const frames = 60; // ~1s
       const step = target / frames || 1;
+      let val = m && m[2] ? Number(m[2]) || 0 : 0;
 
-      let val = 0;
       const tick = () => {
         val += step;
-        const done = (step >= 0 ? val >= target : val <= target);
+        const done = step >= 0 ? val >= target : val <= target;
         const shown = done ? target : val;
-        // Keep decimals consistent with target
         const formatted = precision ? shown.toFixed(precision) : Math.round(shown).toString();
         el.textContent = `${prefix}${formatted}${suffix}`;
         if (!done) requestAnimationFrame(tick);
       };
 
-      // Start from the numeric part in the element, or 0
-      if (m && m[2]) {
-        val = Number(m[2]) || 0;
-      } else {
-        val = 0;
-      }
       requestAnimationFrame(tick);
     });
   };
 
   const outcomes = document.getElementById('outcomes');
   if (outcomes && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          startCounters(outcomes);
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.25 });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            startCounters(outcomes);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
     io.observe(outcomes);
   } else {
     startCounters();
   }
 })();
 </script>
-
-      if ('IntersectionObserver' in window && section) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              start();
-              io.disconnect();
-            }
-          });
-        }, { threshold: 0.25 });
-        io.observe(section);
-      } else {
-        start();
-      }
-    })();
-  </script>
 </body>
 </html>
