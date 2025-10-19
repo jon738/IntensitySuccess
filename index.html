@@ -39,51 +39,57 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero hero-split" id="top">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">AI Coaching • Systems • Clarity</p>
-        <h1>Where human potential meets artificial intelligence.</h1>
-        <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#services">Start the Transformation</a>
-          <a class="btn" href="#about">Learn More</a>
-        </div>
-
-        <ul class="hero-points">
-          <li>AI-assisted strategy & weekly coaching</li>
-          <li>Habit systems and lightweight automation</li>
-          <li>Clear 90-day outcomes you can measure</li>
-        </ul>
+<!-- HERO -->
+<section class="hero hero-split">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Coaching • Systems • Clarity</p>
+      <h1>Where human potential meets artificial intelligence.</h1>
+      <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Start the Transformation</a>
+        <a class="btn" href="#about">Learn More</a>
       </div>
+      <ul class="hero-points">
+        <li>AI-assisted strategy & weekly coaching</li>
+        <li>Habit systems and lightweight automation</li>
+        <li>Clear 90-day outcomes you can measure</li>
+      </ul>
+    </div>
 
-      <!-- Visual (glow + transparent brain PNG) -->
-     <div class="ai-visual" aria-hidden="true">
-  <div class="ai-blob"></div>
-  <img
-    class="ai-brain"
-    src="assets/ai-brain.png?v=2"
-    alt="Stylized AI Brain"
-    loading="eager"
-    decoding="async"
-  />
-</div>
+    <!-- Clean, contained visual: glow + inline SVG brain (no image file needed) -->
+    <div class="ai-visual" aria-hidden="true">
+      <div class="ai-blob"></div>
 
-        <!-- Use the transparent PNG; JPEG listed as fallback via <picture> -->
-        <picture>
-          <source srcset="assets/ai-brain-transparent.png?v=6" type="image/png" />
-          <img
-            class="ai-brain"
-            src="assets/ai-brain-transparent.png?v=6"
-            alt="Stylized AI brain"
-            width="1024" height="1024"
-            loading="eager" decoding="async"
-          />
-        </picture>
-      </div>
-    </div> <!-- ← closes .container.hero-grid -->
+      <!-- Inline SVG = guaranteed transparent background -->
+      <svg class="ai-brain-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized AI brain">
+        <defs>
+          <linearGradient id="brainStroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#0b3a66"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Left hemisphere -->
+        <path d="M256 92c-72 0-128 46-128 114 0 18-22 30-22 65 0 58 41 98 102 98 17 0 26 17 26 34 0 16-6 31-9 38"
+              fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M200 152c-31 9-55 31-55 60 0 22 14 35 31 44" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M170 298c-17 9-28 24-28 42 0 24 19 42 42 42" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M224 224c-30 9-46 24-46 46 0 17 13 30 31 38" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+
+        <!-- Midline -->
+        <path d="M256 120v272" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+
+        <!-- Right hemisphere -->
+        <path d="M256 92c72 0 128 46 128 114 0 18 22 30 22 65 0 58-41 98-102 98-17 0-26 17-26 34 0 16 6 31 9 38"
+              fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M312 152c31 9 55 31 55 60 0 22-14 35-31 44" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M342 298c17 9 28 24 28 42 0 24-19 42-42 42" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M288 224c30 9 46 24 46 46 0 17-13 30-31 38" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
   </section>
 
   <main>
