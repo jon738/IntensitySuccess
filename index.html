@@ -134,41 +134,29 @@
       </div>
     </section>
 
-      <!-- FAQ -->
+   <!-- FAQ -->
 <section id="faq" class="section alt">
   <div class="container narrow">
     <h2>FAQ</h2>
 
-    <details class="faq">
+    <details class="faq reveal">
       <summary>Who is this for?</summary>
-      <p>
-        Founders, solo operators, and small teams who want clearer priorities
-        and measurable momentum.
-      </p>
+      <p>Founders, solo operators, and small teams who want clearer priorities and measurable momentum.</p>
     </details>
 
-    <details class="faq">
+    <details class="faq reveal">
       <summary>How do sessions work?</summary>
-      <p>
-        Weekly or bi-weekly calls, async check-ins, and light ops support between
-        sessions. Every week ends with a clear deliverable or refinement.
-      </p>
+      <p>Weekly or bi-weekly calls, async check-ins, and light ops support between sessions. Every week ends with a clear deliverable or refinement.</p>
     </details>
 
-    <details class="faq">
+    <details class="faq reveal">
       <summary>Can you integrate with our current tools?</summary>
-      <p>
-        Yes — most clients use Notion, ClickUp, or Google Workspace. We’ll connect
-        your existing tools to AI workflows and simple automations. No rebuilds required.
-      </p>
+      <p>Yes — most clients use Notion, ClickUp, or Google Workspace. We’ll connect your existing tools to AI workflows and simple automations. No rebuilds required.</p>
     </details>
 
-    <details class="faq">
+    <details class="faq reveal">
       <summary>What if I just need a one-time strategy sprint?</summary>
-      <p>
-        That’s what the <strong>90-Day Intensive</strong> is for. You’ll leave with
-        a clear roadmap, measurable goals, and a system you can maintain yourself.
-      </p>
+      <p>That’s what the <strong>90-Day Intensive</strong> is for. You’ll leave with a clear roadmap, measurable goals, and a system you can maintain yourself.</p>
     </details>
   </div>
 </section>
@@ -184,21 +172,6 @@
   </div>
 </section>
 
-</main>
-
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-<script>
   // --- Simple counter animation for KPIs ---
   document.querySelectorAll(".kpi-number").forEach((el) => {
     const target = +el.dataset.target;
@@ -216,6 +189,18 @@
     update();
   });
 
+</main>                  
+
+        <!-- Footer -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
   // --- Auto update footer year ---
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
