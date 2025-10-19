@@ -23,13 +23,13 @@
     </div>
   </header>
 
-  <!-- HERO: Text left, breathing grid card right -->
+  <!-- HERO -->
   <section class="hero hero-split">
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">AI Coaching • Systems • Clarity</p>
-        <h1>Level up your business with focused execution.</h1>
-        <p>Hands-on consulting, systems, and coaching to turn momentum into measurable results.</p>
+        <h1>Where human potential meets artificial intelligence.</h1>
+        <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#services">Start the Transformation</a>
           <a class="btn" href="#about">Learn More</a>
@@ -41,15 +41,15 @@
         </ul>
       </div>
 
-      <!-- Visual card (no images) -->
+      <!-- Breathing grid card + transparent brain image -->
       <div class="ai-visual" aria-hidden="true">
         <div class="ai-blob"></div>
         <div class="ai-grid"></div>
+        <img class="ai-brain" src="assets/ai-brain.png?v=7" alt="Stylized AI brain" loading="eager" decoding="async">
       </div>
     </div>
   </section>
 
-  <!-- Optional sections (keep or remove) -->
   <main>
     <section id="services" class="section">
       <div class="container">
@@ -103,15 +103,12 @@
   </footer>
 
   <script>
-    // Year + sticky-header tint
+    // Year + subtle header tint on scroll
     document.getElementById('year').textContent = new Date().getFullYear();
-    const onScroll = () => {
-      if (window.scrollY > 6) document.body.classList.add('scrolled');
-      else document.body.classList.remove('scrolled');
-    };
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    // Mobile nav (optional)
+    const onScroll = () => document.body.classList.toggle('scrolled', window.scrollY > 6);
+    document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // Mobile nav
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.site-nav');
     if (toggle) toggle.addEventListener('click', () => nav.classList.toggle('open'));
