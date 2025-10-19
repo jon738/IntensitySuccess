@@ -123,18 +123,20 @@ body.scrolled .site-header {
 .hero-points { margin: 16px 0 0; padding-left: 18px; color: var(--muted); }
 .hero-points li { margin: 4px 0; }
 
-/* === Enhanced AI visual motion (more visible glow + drift) === */
+/* === AI visual with perfectly rounded corners === */
 .ai-visual {
   position: relative;
   height: 360px;
-  overflow: hidden;
+  border-radius: 28px;             /* unified corner rounding */
+  overflow: hidden;                /* ensures blur stays inside */
+  isolation: isolate;              /* keeps blend effects clean */
 }
 
-/* The soft luminous “thinking” background */
+/* Soft luminous “thinking” background */
 .ai-blob {
   position: absolute;
-  inset: -20px; /* allow breathing beyond box */
-  border-radius: 32px;
+  inset: 0;                        /* was -20px — fixed to fit radius */
+  border-radius: inherit;          /* match container */
   background:
     radial-gradient(circle at 25% 35%, rgba(59,130,246,.55), transparent 60%),
     radial-gradient(circle at 75% 65%, rgba(11,58,102,.50), transparent 60%),
@@ -143,11 +145,11 @@ body.scrolled .site-header {
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
 
-/* Grid with a dynamic light sweep */
+/* Grid overlay (breathing light) */
 .ai-grid {
   position: absolute;
   inset: 0;
-  border-radius: 28px;
+  border-radius: inherit;
   background-image:
     linear-gradient(0deg, rgba(59,130,246,.18) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59,130,246,.18) 1px, transparent 1px);
