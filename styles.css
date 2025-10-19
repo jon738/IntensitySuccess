@@ -245,7 +245,7 @@ body.scrolled .site-header{
   color: var(--brand);
 }
 /* ====================================
-/* Cards / grid */
+   Cards / grid
 ==================================== */
 .grid-3{
   display:grid;
