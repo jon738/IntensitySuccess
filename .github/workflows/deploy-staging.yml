@@ -1,15 +1,9 @@
 name: Deploy Staging (GitHub Pages)
 
 on:
+  workflow_dispatch:        # allow manual runs from the Actions tab
   push:
-    branches: [ staging ]
-
-permissions:
-  contents: read
-
-concurrency:
-  group: pages-staging
-  cancel-in-progress: true
+    branches: [ main ]      # or change to the branch you edit in prod
 
 jobs:
   deploy:
@@ -17,25 +11,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup git user
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      # If you add a build later (e.g., npm run build), change publish_dir to your build folder
-      - name: Deploy to STAGING external repo
+      - name: Push site to staging repo main
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.STAGING_TOKEN }}
-          external_repository: jon738/intensitysuccess-staging
-          publish_branch: gh-pages
-          publish_dir: ./           # change to ./dist if you add a build step
-          force_orphan: true
-          exclude_assets: |
-            .github
-            .gitignore
-            README.md
-            LICENSE
+          personal_token: ${{ secrets.STAGING_TOKEN }}   # PAT from your account
+          external_repository: jon738/IntensitySuccess-Staging
+          publish_branch: main                           # <— push into staging main
+          publish_dir: ./                                # where index.html lives
