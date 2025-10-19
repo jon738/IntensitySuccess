@@ -263,39 +263,61 @@
       }
     })();
 
-   <script>
+  <script>
 (() => {
-  // Start the counters inside a root node (defaults to document)
+  // Helper: how many decimals the target has
+  const decimalsOf = (n) => {
+    const s = String(n);
+    return (s.split('.')[1] || '').length;
+  };
+
+  // Animate all .kpi-number inside a root (section) once
   const startCounters = (root = document) => {
-    root.querySelectorAll('.kpi-number').forEach(el => {
-      if (el.dataset.animated === 'true') return; // prevent double-run
+    root.querySelectorAll('.kpi-number').forEach((el) => {
+      if (el.dataset.animated === 'true') return;   // don't double-run
       el.dataset.animated = 'true';
 
-      const target = Number(el.dataset.target || 0);
-      const suffix = el.dataset.suffix || '';
-      let current = 0;
+      // Detect prefix/number/suffix from current text (e.g., "$0%", "0×")
+      const initial = el.textContent.trim();
+      const m = initial.match(/^(\D*)(-?\d+(?:\.\d+)?)(.*)$/); // prefix | number | suffix
 
-      // Smooth-ish timing ~1s; tweak divisor for speed
-      const step = Math.max(1, Math.round(target / 60));
+      // Prefer data- attrs; fall back to what we parsed from the text
+      const prefix = el.dataset.prefix ?? (m ? m[1] : '');
+      const suffix = el.dataset.suffix ?? (m ? m[3] : '');
 
+      // Target number (from data-target or parsed number)
+      const target = Number(el.dataset.target ?? (m ? m[2] : 0)) || 0;
+      const precision = decimalsOf(el.dataset.target ?? target);
+
+      // Choose step; smaller divisor => faster
+      const frames = 60; // ~1s
+      const step = target / frames || 1;
+
+      let val = 0;
       const tick = () => {
-        current += step;
-        if (current < target) {
-          el.textContent = current + suffix;
-          requestAnimationFrame(tick);
-        } else {
-          el.textContent = target + suffix;
-        }
+        val += step;
+        const done = (step >= 0 ? val >= target : val <= target);
+        const shown = done ? target : val;
+        // Keep decimals consistent with target
+        const formatted = precision ? shown.toFixed(precision) : Math.round(shown).toString();
+        el.textContent = `${prefix}${formatted}${suffix}`;
+        if (!done) requestAnimationFrame(tick);
       };
-      tick();
+
+      // Start from the numeric part in the element, or 0
+      if (m && m[2]) {
+        val = Number(m[2]) || 0;
+      } else {
+        val = 0;
+      }
+      requestAnimationFrame(tick);
     });
   };
 
   const outcomes = document.getElementById('outcomes');
-
   if (outcomes && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
+      entries.forEach((en) => {
         if (en.isIntersecting) {
           startCounters(outcomes);
           io.disconnect();
@@ -304,7 +326,6 @@
     }, { threshold: 0.25 });
     io.observe(outcomes);
   } else {
-    // Fallback
     startCounters();
   }
 })();
