@@ -244,22 +244,28 @@ body.scrolled .site-header{
   box-shadow: 0 8px 20px rgba(11,58,102,.12);
   color: var(--brand);
 }
-
 /* ====================================
-   Cards / grid
+/* Cards / grid */
 ==================================== */
-.grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px; }
-.card{
-  background: var(--panel);
-  border:1px solid rgba(0,0,0,.06);
-  border-radius: var(--radius-md);
-  padding:26px;
-  box-shadow: var(--shadow-sm);
-  transition: transform .2s ease, box-shadow .2s ease;
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
 }
-.card:hover{ transform: translateY(-4px); box-shadow: 0 14px 32px rgba(59,130,246,.18); }
-.card h3{ margin:4px 0 8px; color: var(--brand-2); }
-.card p{ margin:0; color: var(--muted); }
+.card{
+  background:#fff;              /* var(--panel) is fine too */
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:0 6px 18px rgba(11,58,102,.10);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(59,130,246,.18);
+}
+.card h3{ margin:4px 0 8px; color:#0b3a66; }
+.card p { margin:0; color:#475569; }
 
 /* ====================================
    About / Contact
