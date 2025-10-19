@@ -3,33 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b3a66" />
-
   <title>Intensity Success — AI Coaching & Consulting</title>
-  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see measurable progress in your business and life." />
+  <meta name="description" content="AI-powered coaching and consulting to help you work smarter, build systems, and finally see progress in your business and life." />
   <link rel="canonical" href="https://intensitysuccess.com/">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Intensity Success — AI Coaching & Consulting" />
-  <meta property="og:description" content="Work smarter with AI-enhanced coaching. Clarity, systems, and momentum you can measure." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://intensitysuccess.com/" />
-  <meta property="og:image" content="https://intensitysuccess.com/assets/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="#top">Intensity Success</a>
+      <a class="logo" href="#">Intensity Success</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="site-nav" aria-label="Primary">
         <a href="#services">Services</a>
@@ -39,123 +23,68 @@
     </div>
   </header>
 
-<!-- HERO -->
-<section class="hero hero-split">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">AI Coaching • Systems • Clarity</p>
-      <h1>Where human potential meets artificial intelligence.</h1>
-      <p>Personalized coaching powered by AI insights to transform how you think, plan, and perform — in business and life.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#services">Start the Transformation</a>
-        <a class="btn" href="#about">Learn More</a>
+  <!-- HERO: Text left, breathing grid card right -->
+  <section class="hero hero-split">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">AI Coaching • Systems • Clarity</p>
+        <h1>Level up your business with focused execution.</h1>
+        <p>Hands-on consulting, systems, and coaching to turn momentum into measurable results.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">Start the Transformation</a>
+          <a class="btn" href="#about">Learn More</a>
+        </div>
+        <ul class="hero-points">
+          <li>AI-assisted strategy & weekly coaching</li>
+          <li>Habit systems and lightweight automation</li>
+          <li>Clear 90-day outcomes you can measure</li>
+        </ul>
       </div>
-      <ul class="hero-points">
-        <li>AI-assisted strategy & weekly coaching</li>
-        <li>Habit systems and lightweight automation</li>
-        <li>Clear 90-day outcomes you can measure</li>
-      </ul>
+
+      <!-- Visual card (no images) -->
+      <div class="ai-visual" aria-hidden="true">
+        <div class="ai-blob"></div>
+        <div class="ai-grid"></div>
+      </div>
     </div>
-
-    <!-- Clean, contained visual: glow + inline SVG brain (no image file needed) -->
-    <div class="ai-visual" aria-hidden="true">
-      <div class="ai-blob"></div>
-
-      <!-- Inline SVG = guaranteed transparent background -->
-      <svg class="ai-brain-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized AI brain">
-        <defs>
-          <linearGradient id="brainStroke" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"  stop-color="#3b82f6"/>
-            <stop offset="100%" stop-color="#0b3a66"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Left hemisphere -->
-        <path d="M256 92c-72 0-128 46-128 114 0 18-22 30-22 65 0 58 41 98 102 98 17 0 26 17 26 34 0 16-6 31-9 38"
-              fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M200 152c-31 9-55 31-55 60 0 22 14 35 31 44" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-        <path d="M170 298c-17 9-28 24-28 42 0 24 19 42 42 42" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-        <path d="M224 224c-30 9-46 24-46 46 0 17 13 30 31 38" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-
-        <!-- Midline -->
-        <path d="M256 120v272" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-
-        <!-- Right hemisphere -->
-        <path d="M256 92c72 0 128 46 128 114 0 18 22 30 22 65 0 58-41 98-102 98-17 0-26 17-26 34 0 16 6 31 9 38"
-              fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M312 152c31 9 55 31 55 60 0 22-14 35-31 44" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-        <path d="M342 298c17 9 28 24 28 42 0 24-19 42-42 42" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-        <path d="M288 224c30 9 46 24 46 46 0 17-13 30-31 38" fill="none" stroke="url(#brainStroke)" stroke-width="16" stroke-linecap="round"/>
-      </svg>
-    </div>
-  </div>
-</section>
   </section>
 
+  <!-- Optional sections (keep or remove) -->
   <main>
-    <!-- Services -->
     <section id="services" class="section">
       <div class="container">
         <div class="narrow" style="text-align:center; margin-bottom:28px;">
           <h2>Services</h2>
           <p class="form-note" style="margin:8px 0 0;">No fluff. Clear outcomes. Choose the track that fits your current stage.</p>
         </div>
-
         <div class="grid-3">
-          <article class="card reveal">
-            <h3>🚀 Strategy Intensive (90-Day Plan)</h3>
-            <p>Deep-dive session + a clear 90-day roadmap covering goals, metrics, and the highest-leverage actions. Includes a one-page plan and execution cadence.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3>🤖 Systems & AI Automation</h3>
-            <p>Streamline workflows with AI: research, drafting, CRM updates, inbox triage, and repeatable playbooks so you stop drowning in busywork.</p>
-          </article>
-
-          <article class="card reveal">
-            <h3>🎯 Coaching & Accountability</h3>
-            <p>Weekly or bi-weekly calls to keep momentum, remove blockers, and iterate on what’s working. Light ops support between sessions.</p>
-          </article>
+          <article class="card"><h3>🚀 Strategy Intensive</h3><p>90-day plan, metrics, and execution cadence.</p></article>
+          <article class="card"><h3>🤖 Systems & AI Automation</h3><p>Streamline workflows so you stop drowning in busywork.</p></article>
+          <article class="card"><h3>🎯 Coaching & Accountability</h3><p>Weekly calls to maintain momentum and remove blockers.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- About -->
     <section id="about" class="section alt">
       <div class="container narrow">
         <h2>About</h2>
-        <p>
-          Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create
-          clarity, systems, and momentum you can measure.
-        </p>
-        <ul style="margin:14px 0 0; padding-left:18px; color: var(--muted); line-height:1.7;">
+        <p>Intensity Success helps founders and operators work smarter — combining human coaching with AI tools to create clarity, systems, and momentum you can measure.</p>
+        <ul style="margin:14px 0 0; padding-left:18px;">
           <li>Clarity first: define the outcome, then cut steps.</li>
           <li>Systems over heroics: build processes that scale your time.</li>
-          <li>Action bias: small wins compounded weekly beat big plans never shipped.</li>
+          <li>Action bias: small weekly wins beat big plans never shipped.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="section">
       <div class="container narrow">
         <h2>Contact</h2>
         <p class="form-note" style="margin-bottom:12px;">Tell me a bit about your goals and timeline. I’ll reply with next steps and a link to book a call.</p>
-
-        <!-- Replace 'yourid' with your actual Formspree ID -->
         <form class="contact" action="https://formspree.io/f/yourid" method="POST">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required>
-          </label>
-          <label>
-            <span>What are you trying to achieve in the next 90 days?</span>
-            <textarea name="message" rows="6" required></textarea>
-          </label>
+          <label><span>Name</span><input type="text" name="name" required></label>
+          <label><span>Email</span><input type="email" name="email" required></label>
+          <label><span>What are you trying to achieve in the next 90 days?</span><textarea name="message" rows="6" required></textarea></label>
           <button class="btn btn-primary" type="submit">Request Discovery Call</button>
           <p class="form-note">Prefer email? <a href="mailto:hello@intensitysuccess.com">hello@intensitysuccess.com</a></p>
         </form>
@@ -173,27 +102,19 @@
     </div>
   </footer>
 
-  <!-- Small helpers -->
   <script>
-    // Current year
+    // Year + sticky-header tint
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Sticky header state
     const onScroll = () => {
-      document.body.classList.toggle('scrolled', window.scrollY > 8);
+      if (window.scrollY > 6) document.body.classList.add('scrolled');
+      else document.body.classList.remove('scrolled');
     };
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Mobile menu
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    // Mobile nav (optional)
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
-    }
+    if (toggle) toggle.addEventListener('click', () => nav.classList.toggle('open'));
   </script>
-  <script src="script.js" defer></script>
 </body>
 </html>
