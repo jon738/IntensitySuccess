@@ -133,6 +133,80 @@
         </form>
       </div>
     </section>
+
+        <details class="faq">
+      <summary>How do sessions work?</summary>
+      <p>
+        Weekly or bi-weekly calls, async check-ins, and light ops support between
+        sessions. We iterate fast — every week ends with a tangible win or refinement.
+      </p>
+    </details>
+    <details class="faq">
+      <summary>Can you integrate with our current tools?</summary>
+      <p>
+        Yes. Most clients use Notion, ClickUp, or Google Workspace. I’ll help you
+        connect your existing stack to AI automations or simpler workflows — no
+        overhaul required.
+      </p>
+    </details>
+    <details class="faq">
+      <summary>What if I just need a one-time strategy sprint?</summary>
+      <p>
+        That’s what the <strong>90-Day Intensive</strong> is for. You’ll leave with a clear roadmap,
+        key metrics, and system templates you can maintain independently.
+      </p>
+    </details>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section id="cta" class="section">
+  <div class="container narrow" style="text-align:center;">
+    <h2>Ready to build unstoppable momentum?</h2>
+    <p style="color:var(--muted); max-width:540px; margin:12px auto 24px;">
+      Start with a free discovery call to map your 90-day outcome and see if we’re a fit.
+    </p>
+    <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Intensity Success · All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // --- Simple counter animation for KPIs ---
+  document.querySelectorAll(".kpi-number").forEach((el) => {
+    const target = +el.dataset.target;
+    let count = 0;
+    const speed = 40; // smaller = faster
+    const update = () => {
+      count += Math.ceil(target / 50);
+      if (count < target) {
+        el.textContent = count;
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target;
+      }
+    };
+    update();
+  });
+
+  // --- Auto update footer year ---
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
   </main>
 
   <footer class="site-footer">
