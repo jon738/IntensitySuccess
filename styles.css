@@ -123,29 +123,46 @@ body.scrolled .site-header {
 .hero-points { margin: 16px 0 0; padding-left: 18px; color: var(--muted); }
 .hero-points li { margin: 4px 0; }
 
-/* === AI visual (perfect corners + soft lift shadow) === */
+/* === Brain-shaped AI visual === */
 .ai-visual {
   position: relative;
   height: 360px;
-  border-radius: 28px;                  /* unified corners */
-  overflow: hidden;                     /* keeps blur clean */
-  isolation: isolate;                   /* prevents bleed */
-  box-shadow:
-    0 20px 40px rgba(11, 58, 102, 0.08),   /* soft outer lift */
-    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* inner highlight */
+  width: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(11, 58, 102, 0.08);
 }
-.ai-visual:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 28px 55px rgba(11, 58, 102, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-/* Soft luminous “thinking” background */
-.ai-blob {
+
+/* SVG brain mask container */
+.ai-brain-mask {
   position: absolute;
-  inset: 0;                        /* was -20px — fixed to fit radius */
-  border-radius: inherit;          /* match container */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mask-image: url('#');
+}
+
+/* Core layers */
+.ai-blob,
+.ai-grid {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%; /* softened internal edges */
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 350'><path d='M250,20 C120,20,40,100,60,200 C30,250,70,320,150,330 C200,340,230,320,250,300 C270,320,300,340,350,330 C430,320,470,250,440,200 C460,100,380,20,250,20Z' fill='white'/></svg>");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 350'><path d='M250,20 C120,20,40,100,60,200 C30,250,70,320,150,330 C200,340,230,320,250,300 C270,320,300,340,350,330 C430,320,470,250,440,200 C460,100,380,20,250,20Z' fill='white'/></svg>");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* Keep your existing animations */
+.ai-blob {
   background:
     radial-gradient(circle at 25% 35%, rgba(59,130,246,.55), transparent 60%),
     radial-gradient(circle at 75% 65%, rgba(11,58,102,.50), transparent 60%),
@@ -154,11 +171,7 @@ body.scrolled .site-header {
   animation: blobPulse 8s ease-in-out infinite alternate;
 }
 
-/* Grid overlay (breathing light) */
 .ai-grid {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
   background-image:
     linear-gradient(0deg, rgba(59,130,246,.18) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59,130,246,.18) 1px, transparent 1px);
