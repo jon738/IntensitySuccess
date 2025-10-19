@@ -116,65 +116,78 @@ body.scrolled .site-header{
 .hero-points{ margin:16px 0 0; padding-left:18px; color: var(--muted); }
 .hero-points li{ margin:4px 0; }
 
-/* === Hero AI Visual (Transparent Brain + Soft Glow) === */
+/* === Hero AI Visual (contained glow + visible brain) === */
 .ai-visual {
   position: relative;
-  height: 360px;
   width: 100%;
-  border-radius: 32px;
-  overflow: visible; /* allows soft light outside bounds */
+  max-width: 520px;           /* keeps the visual from growing too wide */
+  aspect-ratio: 1 / 1;        /* square box so the glow doesn't stretch */
+  border-radius: 28px;
+  overflow: hidden;           /* CONTAINS the blur so it doesn't bleed out */
   isolation: isolate;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none; /* remove the cloudy overlay */
+  justify-self: center;       /* nice alignment in the grid */
+  background: transparent;    /* no tint behind it */
 }
 
-/* Soft animated light glow behind brain */
+/* Soft animated glow, centered and constrained */
 .ai-blob {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  left: 50%;
+  top: 50%;
+  width: 420px;
+  height: 420px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 40%, rgba(59,130,246,.25), transparent 60%),
-              radial-gradient(circle at 70% 60%, rgba(11,58,102,.25), transparent 60%);
-  filter: blur(60px);
-  animation: blobPulse 8s ease-in-out infinite alternate;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(59,130,246,.28), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(11,58,102,.26), transparent 60%);
+  filter: blur(38px);
+  opacity: .85;
   z-index: 0;
+  animation: blobPulse 8s ease-in-out infinite alternate;
 }
 
-@keyframes blobPulse {
-  0%   { transform: translate(0,0) scale(1); opacity: 0.6; }
-  50%  { transform: translate(12px,-10px) scale(1.1); opacity: 0.9; }
-  100% { transform: translate(-6px,4px) scale(1.05); opacity: 0.7; }
-}
-
-/* Transparent brain PNG styling */
+/* Make the brain clearly visible (no blend mode) */
 .ai-brain {
-  position: relative;
-  z-index: 2;
-  width: 80%;
-  max-width: 420px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78%;
+  max-width: 440px;
   height: auto;
-  opacity: 0.95;
-  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 1;                       /* solid */
+  mix-blend-mode: normal;           /* <- key change from 'screen' */
+  filter: drop-shadow(0 6px 14px rgba(11,58,102,0.18));
   pointer-events: none;
-  filter: drop-shadow(0 0 18px rgba(59,130,246,0.3));
   animation:
     brainGlow 6s ease-in-out infinite alternate,
     brainFloat 12s ease-in-out infinite;
 }
 
-/* Light pulse and gentle motion */
+/* Glow + float (unchanged) */
 @keyframes brainGlow {
-  0%   { filter: drop-shadow(0 0 10px rgba(59,130,246,0.25)) brightness(1); }
-  100% { filter: drop-shadow(0 0 24px rgba(59,130,246,0.6)) brightness(1.1); }
+  0%   { filter: drop-shadow(0 4px 10px rgba(59,130,246,0.22)) brightness(1); }
+  100% { filter: drop-shadow(0 8px 22px rgba(59,130,246,0.45)) brightness(1.06); }
 }
 
 @keyframes brainFloat {
-  0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-8px) scale(1.02); }
-  100% { transform: translateY(0) scale(1); }
+  0%   { transform: translate(-50%, -50%) translateY(0)   scale(1); }
+  50%  { transform: translate(-50%, -50%) translateY(-8px) scale(1.02); }
+  100% { transform: translate(-50%, -50%) translateY(0)   scale(1); }
+}
+
+/* Keep the blob animation you already have */
+@keyframes blobPulse {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: .7; }
+  50%  { transform: translate(-50%, -50%) scale(1.08); opacity: .95; }
+  100% { transform: translate(-50%, -50%) scale(1.03); opacity: .8; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ai-blob, .ai-brain { animation: none !important; transform: translate(-50%, -50%) !important; }
 }
 
 /* =========================================================
