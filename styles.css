@@ -525,3 +525,47 @@ body.scrolled .site-header{
   #process .process li { padding-left: 52px; }
   #process .process li::before { left: 14px; }
 }
+/* FAQ card styling (card look + caret) */
+#faq details.faq{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius: var(--radius-md);
+  padding:14px 16px;
+  margin-bottom:12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+  will-change: transform, box-shadow, opacity;
+}
+#faq details.faq:hover{ box-shadow: 0 10px 28px rgba(11,58,102,.12); }
+#faq details.faq summary{
+  cursor:pointer; list-style:none; font-weight:600; color:var(--brand-2);
+  display:flex; align-items:center; gap:10px;
+}
+#faq details.faq summary::-webkit-details-marker{ display:none; }
+#faq details.faq summary::after{
+  content:"▸"; font-size:14px; margin-left:auto; transition: transform .25s ease, opacity .25s ease;
+  opacity:.7;
+}
+#faq details.faq[open] summary::after{ transform: rotate(90deg); opacity:1; }
+
+/* subtle reveal of the answer on open */
+#faq details.faq[open] summary ~ *{
+  animation: faqFadeIn .35s ease forwards;
+}
+@keyframes faqFadeIn{
+  from{ opacity:0; transform: translateY(-4px); }
+  to  { opacity:1; transform: translateY(0); }
+}
+
+/* Staggered reveal base (uses your existing .reveal/.show) */
+#faq .faq.reveal{
+  opacity:0;
+  transform: translateY(16px);
+}
+#faq .faq.reveal.show{
+  opacity:1;
+  transform: translateY(0);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Respect motion settings (you already have a global reduce-motion rule) */
