@@ -107,29 +107,47 @@ body.scrolled .site-header {
 .hero-points { margin: 16px 0 0; padding-left: 18px; color: var(--muted); }
 .hero-points li { margin: 4px 0; }
 
-/* === AI visual (perfect corners + soft lift shadow) === */
+/* === Clean Hero AI Visual (No Grid) === */
 .ai-visual {
   position: relative;
   height: 360px;
   width: 100%;
   border-radius: 32px;
-  overflow: hidden;          /* clip blur inside rounded corners */
+  overflow: hidden;
   isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    0 20px 40px rgba(11, 58, 102, 0.08),  /* outer lift */
-    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* inner highlight */
+  box-shadow: 0 20px 40px rgba(11, 58, 102, 0.08);
+  background: radial-gradient(circle at 30% 40%, rgba(59,130,246,.08), transparent 60%);
 }
 
-/* === Glowing & Floating Brain === */
-.ai-brain {
+/* Soft animated light blob */
+.ai-blob {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  inset: -20px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 25% 35%, rgba(59,130,246,.45), transparent 60%),
+    radial-gradient(circle at 75% 65%, rgba(11,58,102,.45), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,255,255,.25));
+  filter: blur(24px);
+  animation: blobPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes blobPulse {
+  0%   { transform: translate(0,0) scale(1); filter: blur(22px); opacity: 0.8; }
+  50%  { transform: translate(12px,-10px) scale(1.06); filter: blur(30px); opacity: 1; }
+  100% { transform: translate(-6px,4px) scale(1.02); filter: blur(24px); opacity: 0.85; }
+}
+
+/* Glowing, floating brain */
+.ai-brain {
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  max-width: 420px;
+  height: auto;
   opacity: 0.9;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -144,41 +162,11 @@ body.scrolled .site-header {
   100% { filter: brightness(1.1) drop-shadow(0 0 18px rgba(59,130,246,0.5)); }
 }
 
-/* Gentle floating motion */
+/* Gentle float motion */
 @keyframes brainFloat {
   0%   { transform: translateY(0) scale(1); }
   50%  { transform: translateY(-8px) scale(1.015); }
   100% { transform: translateY(0) scale(1); }
-}
-
-/* Core layers (no SVG mask — keep full rounded panel) */
-.ai-blob,
-.ai-grid {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit; /* match container radius */
-}
-
-/* Soft luminous “thinking” background */
-.ai-blob {
-  background:
-    radial-gradient(circle at 25% 35%, rgba(59,130,246,.55), transparent 60%),
-    radial-gradient(circle at 75% 65%, rgba(11,58,102,.50), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.45));
-  filter: blur(24px);
-  animation: blobPulse 8s ease-in-out infinite alternate;
-}
-
-/* Breathing grid overlay */
-.ai-grid {
-  background-image:
-    linear-gradient(0deg, rgba(59,130,246,.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,.18) 1px, transparent 1px);
-  background-size: 22px 22px;
-  box-shadow:
-    inset 0 0 0 1px rgba(59,130,246,.22),
-    0 22px 55px rgba(11,58,102,.14);
-  animation: gridGlow 10s ease-in-out infinite, gridDrift 30s linear infinite;
 }
 
 /* Keyframes */
