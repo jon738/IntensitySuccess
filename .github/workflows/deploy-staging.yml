@@ -1,34 +1,30 @@
-name: Deploy Staging (Staging Pages)
+name: Deploy Staging (to IntensitySuccess-Staging/staging)
 
 on:
   push:
-    branches: [ staging ]
+    branches: [ staging ]   # run when you push to the staging branch
 
 permissions:
-  contents: read
+  contents: read            # write to target repo is via the PAT below
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout source repo
         uses: actions/checkout@v4
 
-      - name: Push to staging repo (gh-pages)
+      - name: Publish to staging repo (branch "staging")
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.STAGING_TOKEN }}
+          personal_token: ${{ secrets.STAGING_TOKEN }}   # PAT with "repo" scope
           external_repository: jon738/IntensitySuccess-Staging
-          publish_branch: gh-pages          # staging Pages branch in the target repo
-          publish_dir: ./                   # site root
+          publish_branch: staging                        # target branch in staging repo
+          publish_dir: .                                 # root of your site in source repo
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
           exclude_assets: |
+            .github
             README.md
             CNAME
-            .github/workflows
-
-      - name: Show files to publish
-        run: |
-          pwd
-          ls -la
+          # keep_files: true  # uncomment if you want to preserve existing files in target branch
