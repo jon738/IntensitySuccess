@@ -19,20 +19,7 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="nav container">
-      <a href="index.html" class="logo">Intensity Success</a>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-      <nav class="site-nav">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#outcomes">Results</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="blog/" id="nav-blog" class="active">Blog</a>
-        <a class="btn btn-primary" href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<div id="site-header"></div>
 
   <!-- Blog Article -->
   <article class="section alt">
@@ -70,17 +57,7 @@
     </div>
   </article>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>© <span id="y"></span> Intensity Success · All rights reserved.</p>
-      <div class="footer-links">
-        <a href="privacy">Privacy</a>
-        <a href="terms">Terms</a>
-        <a href="blog/">Blog</a>
-      </div>
-    </div>
-  </footer>
+ <div id="site-footer"></div>
 
   <!-- JS -->
   <script>
@@ -113,5 +90,62 @@
     window.addEventListener('scroll', onScroll);
     onScroll();
   </script>
+  <!-- existing scripts here -->
+  <script>
+  (function () {
+    var projectPath = '/IntensitySuccess-Staging/';
+    var prefix = location.pathname.startsWith(projectPath) ? projectPath : '/';
+
+    function initHeaderBehaviors() {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+    }
+
+    function loadHeader() {
+      const mount = document.getElementById('site-header');
+      if (!mount) return;
+      fetch(prefix + 'includes/header.html')
+        .then(r => r.text())
+        .then(html => {
+          mount.innerHTML = html;
+          initHeaderBehaviors();
+        })
+        .catch(err => console.error('Header load failed:', err));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadHeader);
+    } else {
+      loadHeader();
+    }
+  })();
+  </script>
+  <script>
+(function () {
+  var projectPath = '/IntensitySuccess-Staging/';
+  var prefix = location.pathname.startsWith(projectPath) ? projectPath : '/';
+
+  function loadFooter() {
+    const mount = document.getElementById('site-footer');
+    if (!mount) return;
+    fetch(prefix + 'includes/footer.html', { cache: 'no-cache' })
+      .then(r => r.text())
+      .then(html => { mount.innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadFooter);
+  } else {
+    loadFooter();
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <head>
+  <!-- ... your existing meta + styles ... -->
   <script>
-    (function () {
-      // Handle GitHub Pages subpath (staging) vs production root
-      var projectPath = '/IntensitySuccess-Staging/';
-      var base = location.pathname.startsWith(projectPath) ? projectPath : '/';
-      var baseEl = document.createElement('base');
-      baseEl.setAttribute('href', base);
-      document.head.prepend(baseEl);
-    })();
+  (function () {
+    var projectPath = '/IntensitySuccess-Staging/';     // GH Pages repo path
+    var base = location.pathname.startsWith(projectPath) ? projectPath : '/';
+    var el = document.createElement('base');
+    el.setAttribute('href', base);
+    document.head.prepend(el);
+  })();
   </script>
+</head>
   <meta name="theme-color" content="#f4f6fa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
   <meta charset="utf-8" />
@@ -34,21 +36,9 @@
     <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="logo" href="index.html">Intensity Success</a>
-      <nav class="site-nav">
-        <a href="#services">Services</a>
-        <a href="#outcomes">Results</a>
-        <a href="#faq">FAQ</a>
-        <a href="blog/" id="nav-blog">Blog</a>
-        <a class="btn btn-primary" href="#contact">Contact</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<div id="site-header"></div>
 
   <main>
     <!-- HERO -->
@@ -233,17 +223,7 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>© <span id="y"></span> Intensity Success · All rights reserved.</p>
-      <div class="footer-links">
-        <a href="privacy">Privacy</a>
-        <a href="terms">Terms</a>
-        <a href="blog/">Blog</a>
-      </div>
-    </div>
-  </footer>
+ <div id="site-footer"></div>
 
   <!-- Scripts -->
   <script>
@@ -370,5 +350,62 @@
     }
   })();
   </script>
+  <script>
+(function () {
+  // figure out the right prefix (prod "/" vs GH Pages "/IntensitySuccess-Staging/")
+  var projectPath = '/IntensitySuccess-Staging/';
+  var prefix = location.pathname.startsWith(projectPath) ? projectPath : '/';
+
+  function initHeaderBehaviors() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  }
+
+  function loadHeader() {
+    const mount = document.getElementById('site-header');
+    if (!mount) return;
+    fetch(prefix + 'includes/header.html')
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+        initHeaderBehaviors(); // wire up menu after injection
+      })
+      .catch(err => console.error('Header load failed:', err));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadHeader);
+  } else {
+    loadHeader();
+  }
+})();
+</script>
+  <script>
+(function () {
+  var projectPath = '/IntensitySuccess-Staging/';
+  var prefix = location.pathname.startsWith(projectPath) ? projectPath : '/';
+
+  function loadFooter() {
+    const mount = document.getElementById('site-footer');
+    if (!mount) return;
+    fetch(prefix + 'includes/footer.html', { cache: 'no-cache' })
+      .then(r => r.text())
+      .then(html => { mount.innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadFooter);
+  } else {
+    loadFooter();
+  }
+})();
+</script>
 </body>
 </html>
